@@ -42,7 +42,7 @@ public class Paysan extends Personnage {
     }
     
     /**
-     * Constructor without any param
+     * Constructor without any parameter
      */
     public Paysan()
     {
