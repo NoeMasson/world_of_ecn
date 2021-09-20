@@ -326,4 +326,17 @@ public class Personnage {
             );
         pos.affiche();
     }
+     
+    
+    /*public void utilise(Objet obj)
+    {
+        if(obj instanceof Soin)
+        {
+            this.ptVie += obj.getQuantiteRestore();
+        }
+        else if(obj instanceof Mana)
+        {
+            this.
+        }
+    }*/
 }
