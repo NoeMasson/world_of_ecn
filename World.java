@@ -27,10 +27,18 @@ public class World {
      */
     public Lapin bugs;
     
+    public Lapin bunny;
+    
     /**
      * Guillaume Tell, a famous archer
      */
     public Archer guillaumeT;
+    
+    public Guerrier grosBill;
+    
+    public Mage merlin;
+    
+    public Loup wolfie;
     
     /**
      * Constructor for a new world
