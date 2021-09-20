@@ -14,17 +14,125 @@ import java.util.Random;
  */
 public class Personnage {
 
+    /**
+     * Name of the character.
+     */
     private String nom;
+    
+    /**
+     * Number of health point of the character.
+     */
     private int ptVie;
+    
+    /**
+     * Number of mana point of the character.
+     */
     private int ptMana;
+    
+    /**
+     * The percentage corresponding to the success of an attack of the 
+     * character.
+     */
     private int pourcentageAtt;
+    
+    /**
+     * The percentage corresponding to the success of a parade. 
+     */
     private int pourcentagePar;
+    
+    /**
+     * The percentage corresponding to the success of a magical attack.
+     */
     private int pourcentageMag;
+    
+    /**
+     * The percentage corresponding to the resistance to magical attack of the 
+     * character.
+     */
     private int pourcentageResistMag;
+    
+    /**
+     * The amount of damage that inflict the character.
+     */
     private int degAtt;
+    
+    /** 
+     * The amount of magical damage that inflict the character.
+     */
     private int degMag;
+    
+    /**
+     * The range at which the character can access.
+     */
     private int distAttMax;
+    
+    /**
+     * The position of the character on the map.
+     */
     private Point2D pos;
+    
+
+    /**
+     * Personnage constructor which specify all the attributes.
+     * @param nom
+     * @param ptV
+     * @param ptM
+     * @param pA
+     * @param pP
+     * @param pM
+     * @param rM
+     * @param dA
+     * @param dM
+     * @param distMax
+     * @param pos 
+     */
+    public Personnage(String nom, int ptV, int ptM, int pA, 
+            int pP, int pM, int rM, int dA, int dM, int distMax, Point2D pos)
+    {
+        this.nom = nom;
+        this.ptVie = ptV;
+        this.ptMana = ptM;
+        this.pourcentageAtt = pA;
+        this.pourcentageMag = pM;
+        this.pourcentagePar = pP;
+        this.pourcentageResistMag = rM;
+        this.degAtt = dA;
+        this.degMag = dM;
+        this.distAttMax = distMax;
+        this.pos = new Point2D(pos);
+    }
+    
+    
+    /**
+     * Copy constructor for Personnage.
+     * @param perso : Personnage to copy.
+     */
+    public Personnage(Personnage perso)
+    {
+        this.nom = perso.getNom();
+        this.ptVie = perso.getPtVie();
+        this.ptMana = perso.getPtMana();
+        this.pourcentageAtt = perso.getPourcentageAtt();
+        this.pourcentageMag = perso.getPourcentageMag();
+        this.pourcentagePar = perso.getPourcentagePar();
+        this.pourcentageResistMag = perso.getPourcentageResistMag();
+        this.degAtt = perso.getDegAtt();
+        this.degMag = perso.getDegMag();
+        this.distAttMax = perso.getDistAttMax();
+        this.pos = new Point2D(perso.getPos());
+    }
+    
+    
+    /**
+     * Default constructor for Personnage. 
+     * Each variables is initiated with default values (0 for int, null for 
+     * String, (0,0) for Point2D, ...)
+     */
+    public Personnage()
+    {
+        this.pos = new Point2D();
+    }
+    
     
     /**
      * @return the nom
@@ -179,42 +287,6 @@ public class Personnage {
     public void setPos(Point2D pos) {
         this.pos = pos;
     }
-
-    public Personnage(String nom, int ptV, int ptM, int pA, 
-            int pP, int pM, int rM, int dA, int dM, int distMax, Point2D pos)
-    {
-        this.nom = nom;
-        this.ptVie = ptV;
-        this.ptMana = ptM;
-        this.pourcentageAtt = pA;
-        this.pourcentageMag = pM;
-        this.pourcentagePar = pP;
-        this.pourcentageResistMag = rM;
-        this.degAtt = dA;
-        this.degMag = dM;
-        this.distAttMax = distMax;
-        this.pos = new Point2D(pos);
-    }
-    
-    public Personnage(Personnage perso)
-    {
-        this.nom = perso.getNom();
-        this.ptVie = perso.getPtVie();
-        this.ptMana = perso.getPtMana();
-        this.pourcentageAtt = perso.getPourcentageAtt();
-        this.pourcentageMag = perso.getPourcentageMag();
-        this.pourcentagePar = perso.getPourcentagePar();
-        this.pourcentageResistMag = perso.getPourcentageResistMag();
-        this.degAtt = perso.getDegAtt();
-        this.degMag = perso.getDegMag();
-        this.distAttMax = perso.getDistAttMax();
-        this.pos = new Point2D(perso.getPos());
-    }
-    
-    public Personnage()
-    {
-        this.pos = new Point2D();
-    }
     
     
     /**
@@ -232,6 +304,10 @@ public class Personnage {
         this.pos.translate(dx, dy);
     }
     
+    
+    /**
+     * Print the values of each attributes into the terminal.
+     */
     public void affiche()
     {
         System.out.print(

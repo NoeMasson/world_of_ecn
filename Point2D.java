@@ -22,6 +22,37 @@ public class Point2D {
      */
     private int y;
     
+    
+    /**
+     * Default constructor for Point2D. Default coordinates are (0,0).
+     */
+    public Point2D()
+    {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    /**
+     * Constructor for Point2D. 
+     * @param x : the coordinate of the point along the first axis.
+     * @param y : the coordinate of the point along the second axis. 
+     */
+    public Point2D(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    
+    /**
+     * Copy constructor for Point2D.
+     * @param p : the point to copy.
+     */
+    public Point2D(Point2D p)
+    {
+        this.x = p.getX();
+        this.y = p.getY();
+    }
+    
     /**
      * @return the x
      */
@@ -52,37 +83,6 @@ public class Point2D {
     public void setY(int y)
     {
         this.y = y ;
-    }
-    
-    
-    /**
-     * Default constructor for Point2D. Default coordinates are (0,0).
-     */
-    public Point2D()
-    {
-        this.x = 0;
-        this.y = 0;
-    }
-
-    /**
-     * Constructor for Point2D. 
-     * @param x : the coordinate of the point along the first axis.
-     * @param y : the coordinate of the point along the second axis. 
-     */
-    public Point2D(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-    
-    /**
-     * Copy constructor for Point2D.
-     * @param p : the point to copy.
-     */
-    public Point2D(Point2D p)
-    {
-        this.x = p.getX();
-        this.y = p.getY();
     }
             
     
