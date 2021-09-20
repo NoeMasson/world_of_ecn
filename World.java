@@ -28,6 +28,11 @@ public class World {
     public Lapin bugs;
     
     /**
+     * Guillaume Tell, a famous archer
+     */
+    public Archer guillaumeT;
+    
+    /**
      * Constructor for a new world
      */
     public World()
@@ -37,6 +42,8 @@ public class World {
         peon = new Paysan("peon", 100, 0, 0, 0, 0, 0, 0, 0, 0, 
                 new Point2D(0,0));
         bugs = new Lapin(500, 90, 90, 50, new Point2D(0,0));
+        
+        guillaumeT = new Archer(robin);
         this.creeMondeAlea();
     }
     
