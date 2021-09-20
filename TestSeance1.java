@@ -20,16 +20,11 @@ public class TestSeance1 {
         
         System.out.println("Here are the information about testing character robin :");
         testingWorld.robin.affiche();
-        System.out.println("Here are the information about testing character guillaumeT :");
-        testingWorld.guillaumeT.affiche();
         
-        testingWorld.robin.deplace();
+        System.out.println("Here are the information about testing character peon :");
+        testingWorld.peon.affiche();
         
-        System.out.println("New robin info after displacement :");
-        testingWorld.robin.affiche();
-        System.out.println("New robin info after displacement :");
-        testingWorld.guillaumeT.affiche();
-        
-        
+        System.out.println("Here are the information about testing character bugs :");
+        testingWorld.bugs.affiche();
     }
 }
