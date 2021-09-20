@@ -109,6 +109,17 @@ public class Point2D {
         this.y += dy;
     }
     
+    /**
+     * distance from another Point2D
+     * @param p
+     * @return 
+     */
+    public double distance(Point2D p){
+        double dist;
+        dist = Math.sqrt((this.x - p.x)*(this.x - p.x) + (this.y - p.y)*(this.y - p.y));
+        return dist;
+    }
+    
     
     /**
      * Print the coordinates of the point on the terminal.
