@@ -21,7 +21,7 @@ public class World {
     public World()
     {
         robin = new Archer("robin", 100, 100, 15, 2, 1, 1, 10, 1, 5, 
-                new Point2D(0,0));
+                new Point2D(0,0), 10);
         peon = new Paysan("peon", 100, 0, 0, 0, 0, 0, 0, 0, 0, 
                 new Point2D(0,0));
         bugs = new Lapin(500, 90, 90, 50, new Point2D(0,0));

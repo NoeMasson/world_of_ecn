@@ -5,6 +5,8 @@
  */
 package org.centrale.projet.objet;
 
+import java.util.Random;
+
 /**
  *
  * @author Valentin Molina valentin@molina.pro
@@ -112,9 +114,19 @@ public class Monstre {
     }
     
     
-    void deplace()
+    /**
+     * This function moves the character randomly around it's initial position.
+     * The character can move in 8-adjacent and can also stay in the same 
+     * position. Each position as 1 chance out of 9 to be pick. 
+     */
+    public void deplace()
     {
-        //Work in progress.
+        Random rand = new Random();
+        
+        int dx = rand.nextInt(2) - 1;
+        int dy = rand.nextInt(2) - 1;
+        
+        this.pos.translate(dx, dy);
     }
     
     void affiche()
