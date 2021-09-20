@@ -13,11 +13,26 @@ import java.util.Random;
  * @author Noé Masson
  */
 public class Monstre {
-
+    
+    /**
+     * Number of health points.
+     */
     private int ptVie ;
+    /**
+     * Chance to hit a physical attack.
+     */
     private int pourcentageAtt;
+    /**
+     * Chance to block an attack.
+     */
     private int pourcentagePar;
+    /**
+     * Attack damage.
+     */
     private int degAtt;
+    /**
+     * Position of the Monster in the World.
+     */
     private Point2D pos;
     
     /**
@@ -89,7 +104,15 @@ public class Monstre {
     public void setPos(Point2D pos) {
         this.pos = pos;
     }
-
+    
+    /**
+     * Constructor which specify all attributes.
+     * @param ptV
+     * @param pA
+     * @param pP
+     * @param dA
+     * @param pos 
+     */
     public Monstre(int ptV, int pA, int pP, int dA, Point2D pos)
     {
         this.ptVie = ptV;
@@ -99,6 +122,10 @@ public class Monstre {
         this.pos = new Point2D(pos);
     }
     
+    /**
+     * Constructor from another Monster.
+     * @param m 
+     */
     public Monstre(Monstre m)
     {
         this.ptVie = m.getPtVie();
@@ -108,6 +135,9 @@ public class Monstre {
         this.pos = new Point2D(m.getPos());
     }
     
+    /**
+     * Constructor without specifying anything.
+     */
     public Monstre()
     {
         this.pos = new Point2D();

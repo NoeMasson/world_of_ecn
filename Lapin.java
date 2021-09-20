@@ -12,16 +12,31 @@ package org.centrale.projet.objet;
  */
 public class Lapin extends Monstre {
     
+    /**
+     * Constructor which specify all attributes.
+     * @param ptV
+     * @param pA
+     * @param pP
+     * @param dA
+     * @param pos 
+     */
     public Lapin(int ptV, int pA, int pP, int dA, Point2D pos)
     {
         super(ptV, pA, pP, dA, pos);
     }
     
+    /**
+     * Constructor using another Lapin
+     * @param l 
+     */
     public Lapin(Lapin l)
     {
         super(l);
     }
     
+    /**
+     * Constructor without specifying anything.
+     */
     public Lapin()
     {
         super();

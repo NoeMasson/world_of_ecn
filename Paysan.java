@@ -12,17 +12,38 @@ package org.centrale.projet.objet;
  */
 public class Paysan extends Personnage {
     
+    /**
+     * Constructor which specify all attributes
+     * @param nom
+     * @param ptV
+     * @param ptM
+     * @param pA
+     * @param pP
+     * @param pM
+     * @param rM
+     * @param dA
+     * @param dM
+     * @param distMax
+     * @param pos 
+     */
     public Paysan(String nom, int ptV, int ptM, int pA, 
             int pP, int pM, int rM, int dA, int dM, int distMax, Point2D pos)
     {
         super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos);
     }
     
+    /**
+     * Constructor from another Paysan
+     * @param perso 
+     */
     public Paysan(Paysan perso)
     {
         super(perso);
     }
     
+    /**
+     * Constructor without any param
+     */
     public Paysan()
     {
         super();

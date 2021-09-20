@@ -14,10 +14,22 @@ import java.util.Random;
  */
 public class World {
     
+    /**
+     * An Archer character
+     */
     public Archer robin;
+    /**
+     * A Paysan character
+     */
     public Paysan peon;
+    /**
+     * A Lapin
+     */
     public Lapin bugs;
     
+    /**
+     * Constructor for a new world
+     */
     public World()
     {
         robin = new Archer("robin", 100, 100, 15, 2, 1, 1, 10, 1, 5, 
@@ -28,6 +40,9 @@ public class World {
         this.creeMondeAlea();
     }
     
+    /**
+     * For a created map, place the characters randomly following certain proximity rules
+     */
     public final void creeMondeAlea()
     {
         Random rand = new Random();
