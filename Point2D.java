@@ -34,8 +34,8 @@ public class Point2D {
 
     /**
      * Constructor for Point2D. 
-     * @param x : the coordinate of the point along the first axis.
-     * @param y : the coordinate of the point along the second axis. 
+     * @param x The coordinate of the point along the first axis.
+     * @param y The coordinate of the point along the second axis. 
      */
     public Point2D(int x, int y)
     {

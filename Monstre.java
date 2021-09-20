@@ -107,11 +107,11 @@ public class Monstre {
     
     /**
      * Constructor which specify all attributes.
-     * @param ptV
-     * @param pA
-     * @param pP
-     * @param dA
-     * @param pos 
+     * @param ptV Number of health point of the character
+     * @param pA Percentage corresponding to the success of an attack.
+     * @param pP Percentage corresponding to the success of a parade.
+     * @param dA The amount of damage that inflict the character.
+     * @param pos The position of the character on the map.
      */
     public Monstre(int ptV, int pA, int pP, int dA, Point2D pos)
     {
