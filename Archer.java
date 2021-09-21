@@ -132,6 +132,6 @@ public class Archer extends Personnage {
         System.out.println("The Archer " + this.getNom() + 
                 " succeeds in this attack and hit " + opponent.getNom() +
                 " with an arrow.");
-        opponent.setPtVie(Math.min(0, opponent.getPtVie() - this.getDegAtt()));
+        opponent.setPtVie(Math.max(0, opponent.getPtVie() - this.getDegAtt()));
     }
 }

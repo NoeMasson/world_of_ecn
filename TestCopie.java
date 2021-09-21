@@ -10,7 +10,7 @@ package org.centrale.projet.objet;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class TestSeance1 {
+public class TestCopie {
  
     public static void main(String args[])
     {
@@ -27,7 +27,7 @@ public class TestSeance1 {
         
         System.out.println("New robin info after displacement :");
         testingWorld.robin.affiche();
-        System.out.println("New robin info after displacement :");
+        System.out.println("New guillaumeT info after displacement :");
         testingWorld.guillaumeT.affiche();
         
         

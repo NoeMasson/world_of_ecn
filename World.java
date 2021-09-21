@@ -18,14 +18,16 @@ public class World {
      * An Archer character
      */
     public Archer robin;
+    
     /**
      * A Paysan character
      */
     public Paysan peon;
+    
     /**
-     * A Lapin
+     * Twos rabbits
      */
-    public Lapin bugs;
+    public Lapin bugs, bunny;
     
     /**
      * Guillaume Tell, a famous archer
@@ -33,22 +35,44 @@ public class World {
     public Archer guillaumeT;
     
     /**
+     * A warrior
+     */
+    public Guerrier grosBill;
+    
+    /**
+     * A Mage
+     */
+    public Mage merlin;
+    
+    /**
+     * A wolf
+     */
+    public Loup wolfie;
+    
+    /**
      * Constructor for a new world
      */
     public World()
     {
-        robin = new Archer("robin", 100, 100, 15, 2, 1, 1, 10, 1, 5, 
-                new Point2D(0,0), 10);
-        peon = new Paysan("peon", 100, 0, 0, 0, 0, 0, 0, 0, 0, 
-                new Point2D(0,0));
-        bugs = new Lapin(500, 90, 90, 50, new Point2D(0,0));
+        robin = new Archer("Robin", 100, 100, 15, 2, 1, 1, 10, 1, 5, 
+                new Point2D(0,0), 2, 10);
+        peon = new Paysan("Peon", 100, 0, 0, 0, 0, 0, 0, 0, 1, 
+                new Point2D(0,0), 0);
+        bugs = new Lapin("Bugs", 500, 90, 90, 50, 50, 1, new Point2D(0,0), 40);
+        bunny = new Lapin("Bunny", 5, 0, 0, 0, 0, 1, new Point2D(0,0), 0);
+        grosBill = new Guerrier("Gros Bill", 100, 10, 70, 60, 10, 10, 10, 2, 1,
+                new Point2D(0,0), 7);
+        merlin = new Mage("Merlin", 100, 100, 20, 20, 80, 60, 2, 10, 5,
+                new Point2D(0,0), 2);
+        wolfie = new Loup("Wolfie", 50, 90, 50, 20, 7, 1, new Point2D(0,0), 2);
         
-        guillaumeT = new Archer(robin);
         this.creeMondeAlea();
+        guillaumeT = new Archer(robin);
     }
     
     /**
-     * For a created map, place the characters randomly following certain proximity rules
+     * Generate a map by placing the characters randomly following certain 
+     * proximity rules.
      */
     public final void creeMondeAlea()
     {
@@ -57,33 +81,131 @@ public class World {
         int size = 20;
         
         // Positionning the first character : robin.
-        int xR = rand.nextInt(size);
-        int yR = rand.nextInt(size);
-        robin.setPos(new Point2D(xR,yR));
+        int x1 = rand.nextInt(size);
+        int y1 = rand.nextInt(size);
+        Point2D p1 = new Point2D(x1, y1);
+        robin.setPos(p1);
         
         // Positionning the second character : peon.
-        int xP = rand.nextInt(size);
-        int yP = rand.nextInt(size);
-        while((xP == xR && yP == yR) ||
-               Math.sqrt((xR - xP)*(xR - xP) + (yR - yP)*(yR - yP)) > 5)
+        int x2 = rand.nextInt(size);
+        int y2 = rand.nextInt(size);
+        Point2D p2 = new Point2D(x2, y2);
+        while(p1.distance(p2) > 5)
         {
-            xP = rand.nextInt(size);
-            yP = rand.nextInt(size);
+            x2 = rand.nextInt(size);
+            y2 = rand.nextInt(size);
+            p2 = new Point2D(x2, y2);
         }
-        peon.setPos(new Point2D(xP, yP));
+        peon.setPos(p2);
+        p1 = p2;
         
         // Positionning the third character : bugs.
-        int xB = rand.nextInt(size);
-        int yB = rand.nextInt(size);
-        while((xP == xB && yP == yB) || (xR == xB && yR == yB) ||
-               Math.sqrt((xR - xB)*(xR - xB) + (yR - yB)*(yR - yB)) > 5 ||
-               Math.sqrt((xB - xP)*(xB - xP) + (yB - yP)*(yB - yP)) > 5)
+        x2 = rand.nextInt(size);
+        y2 = rand.nextInt(size);
+        p2 = new Point2D(x2, y2);
+        while(p1.distance(p2) > 5)
         {
-            xB = rand.nextInt(size);
-            yB = rand.nextInt(size);
+            x2 = rand.nextInt(size);
+            y2 = rand.nextInt(size);
+            p2 = new Point2D(x2, y2);
         }
-        bugs.setPos(new Point2D(xB, yB));
+        bugs.setPos(p2);
+        p1 = p2;
         
+        // Positionning the fourth character : bunny.
+        x2 = rand.nextInt(size);
+        y2 = rand.nextInt(size);
+        p2 = new Point2D(x2, y2);
+        while(p1.distance(p2) > 5)
+        {
+            x2 = rand.nextInt(size);
+            y2 = rand.nextInt(size);
+            p2 = new Point2D(x2, y2);
+        }
+        bunny.setPos(p2);
+        p1 = p2;
+        
+        // Positionning the fifth character : grosBill.
+        x2 = rand.nextInt(size);
+        y2 = rand.nextInt(size);
+        p2 = new Point2D(x2, y2);
+        while(p1.distance(p2) > 5)
+        {
+            x2 = rand.nextInt(size);
+            y2 = rand.nextInt(size);
+            p2 = new Point2D(x2, y2);
+        }
+        grosBill.setPos(p2);
+        p1 = p2;
+        
+        // Positionning the sixth character : merlin.
+        x2 = rand.nextInt(size);
+        y2 = rand.nextInt(size);
+        p2 = new Point2D(x2, y2);
+        while(p1.distance(p2) > 5)
+        {
+            x2 = rand.nextInt(size);
+            y2 = rand.nextInt(size);
+            p2 = new Point2D(x2, y2);
+        }
+        merlin.setPos(p2);
+        p1 = p2;
+        
+        // Positionning the seventh character : wolfie.
+        x2 = rand.nextInt(size);
+        y2 = rand.nextInt(size);
+        p2 = new Point2D(x2, y2);
+        while(p1.distance(p2) > 5)
+        {
+            x2 = rand.nextInt(size);
+            y2 = rand.nextInt(size);
+            p2 = new Point2D(x2, y2);
+        }
+        wolfie.setPos(p2);
+        p1 = p2;   
+    }
+    
+    
+    /**
+     * Testing method for a game turn.
+     */
+    public void tourDeJeu()
+    {
+        System.out.println("Moving Bugs, Wolfie and Gros Bill.");
+        bugs.deplace();
+        wolfie.deplace();
+        grosBill.deplace();
+        System.out.println("Merlin try to cast a spell on bugs.");
+        merlin.combattre(bugs);
+        System.out.println("Gros Bill try to hit the peon.");
+        grosBill.combattre(peon);
+        System.out.println("Robin try to hit Wolfie");
+        robin.combattre(wolfie);
+        System.out.println("Wolfie try to bite Gros Bill");
+        wolfie.combattre(grosBill);
+    }
+    
+    
+    /**
+     * Display the information about all the characters into the terminal.
+     */
+    public void afficheWorld()
+    {
+        robin.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        peon.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        bugs.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        bunny.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        guillaumeT.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        grosBill.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        merlin.affiche();
+        System.out.println("----------------------------------------------------------------------");
+        wolfie.affiche();
     }
     
     

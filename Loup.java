@@ -89,12 +89,12 @@ public class Loup extends Monstre{
         {
             System.out.println("The opponent " + opponent.getNom() + 
                     " fails to counter the attack.");
-            opponent.setPtVie(Math.min(0, 
+            opponent.setPtVie(Math.max(0, 
                     opponent.getPtVie() - this.getDegAtt()));
         }
         System.out.println("The opponent " + opponent.getNom() + 
                     " counters the attack.");
-        opponent.setPtVie(Math.min(0, 
+        opponent.setPtVie(Math.max(0, 
                 opponent.getPtVie() - Math.max(0, 
                         this.getDegAtt() - opponent.getPtPar())));
         

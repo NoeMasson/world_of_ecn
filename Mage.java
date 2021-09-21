@@ -107,13 +107,13 @@ public class Mage extends Personnage {
         {
             System.out.println("The opponent " + opponent.getNom() + 
                     " fails to counter the attack.");
-            opponent.setPtVie(Math.min(0, 
-                    opponent.getPtVie() - this.getDegAtt()));
+            opponent.setPtVie(Math.max(0, 
+                    opponent.getPtVie() - this.getDegMag()));
         }
         System.out.println("The opponent " + opponent.getNom() + 
                     " counters the attack.");
-        opponent.setPtVie(Math.min(0, 
+        opponent.setPtVie(Math.max(0, 
                 opponent.getPtVie() - Math.max(0, 
-                        this.getDegAtt() - opponent.getPtPar())));
+                        this.getDegMag() - opponent.getPtPar())));
     }
 }
