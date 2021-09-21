@@ -43,11 +43,12 @@ public class Personnage extends Creature {
      * @param dM The amount of magical damage that inflict the character.
      * @param distMax The range at which the character can access.
      * @param pos The position of the character on the map.
+     * @param ptPar The amount of damage that the character can counter.
      */
-    public Personnage(String nom, int ptV, int ptM, int pA, 
-            int pP, int pM, int rM, int dA, int dM, int distMax, Point2D pos)
+    public Personnage(String nom, int ptV, int ptM, int pA, int pP, int pM, 
+            int rM, int dA, int dM, int distMax, Point2D pos, int ptPar)
     {
-        super(nom, ptV, pA, pP, rM, dA, distMax, pos);
+        super(nom, ptV, pA, pP, rM, dA, distMax, pos, ptPar);
         this.ptMana = ptM;
         this.pourcentageMag = pM;
         this.degMag = dM;

@@ -15,6 +15,20 @@ import java.util.Random;
 public class Creature {
 
     /**
+     * @return the ptPar
+     */
+    public int getPtPar() {
+        return ptPar;
+    }
+
+    /**
+     * @param ptPar the ptPar to set
+     */
+    public void setPtPar(int ptPar) {
+        this.ptPar = ptPar;
+    }
+
+    /**
      * @return the nom
      */
     public String getNom() {
@@ -169,6 +183,11 @@ public class Creature {
      */
     private Point2D pos;
     
+    /**
+     * The amount of damage that the character can counter.
+     */
+    private int ptPar;
+    
     
     /**
      * Creature constructor which specify all the attributes.
@@ -180,9 +199,10 @@ public class Creature {
      * @param dA The amount of damage that inflict the character.
      * @param distMax The range at which the character can access.
      * @param pos The position of the character on the map.
+     * @param ptPar The amount of damage that the character can counter.
      */
     public Creature(String nom, int pV, int pA, int pP, int rM, int dA, 
-            int distMax, Point2D pos)
+            int distMax, Point2D pos, int ptPar)
     {
         this.nom = nom;
         this.ptVie = pV;
@@ -192,6 +212,7 @@ public class Creature {
         this.degAtt = dA;
         this.distAttMax = distMax;
         this.pos = new Point2D(pos);
+        this.ptPar = ptPar;
     }
     
     

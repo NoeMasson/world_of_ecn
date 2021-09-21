@@ -25,11 +25,12 @@ public class Paysan extends Personnage {
      * @param dM The amount of magical damage that inflict the character.
      * @param distMax The range at which the character can access.
      * @param pos The position of the character on the map.
+     * @param ptPar The amount of damage that the character can counter.
      */
-    public Paysan(String nom, int ptV, int ptM, int pA, 
-            int pP, int pM, int rM, int dA, int dM, int distMax, Point2D pos)
+    public Paysan(String nom, int ptV, int ptM, int pA, int pP, int pM, int rM,
+            int dA, int dM, int distMax, Point2D pos, int ptPar)
     {
-        super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos);
+        super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos, ptPar);
     }
     
     /**
@@ -47,5 +48,6 @@ public class Paysan extends Personnage {
     public Paysan()
     {
         super();
+        this.setNom("Paysan");
     }
 }

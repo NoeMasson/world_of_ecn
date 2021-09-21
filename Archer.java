@@ -5,6 +5,8 @@
  */
 package org.centrale.projet.objet;
 
+import java.util.Random;
+
 /**
  *
  * @author Valentin Molina valentin@molina.pro
@@ -47,12 +49,13 @@ public class Archer extends Personnage {
      * @param dM The amount of magical damage that inflict the character.
      * @param distMax The range at which the character can access.
      * @param pos The position of the character on the map.
+     * @param ptPar The amount of damage that the character can counter.
      * @param nbF The number of arrow of the archer.
      */
     public Archer(String nom, int ptV, int ptM, int pA, int pP, int pM, int rM, 
-            int dA, int dM, int distMax, Point2D pos, int nbF)
+            int dA, int dM, int distMax, Point2D pos, int ptPar, int nbF)
     {
-        super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos);
+        super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos, ptPar);
         nbFleches = nbF;
     }
     
@@ -76,6 +79,7 @@ public class Archer extends Personnage {
     public Archer()
     {
         super();
+        this.setNom("Archer");
     }
     
     
@@ -87,5 +91,46 @@ public class Archer extends Personnage {
         super.affiche();
         System.out.println("Ce personnage est un archer qui possède " + 
                 nbFleches+ " flèches.");
+    }
+    
+    /**
+     * If the attack is successful the Archer hit the opponent with an arrow.
+     * In both cases, the Archer loses an arrow.
+     * @param opponent The Creature on which the Archer is shooting.
+     */
+    public void combattre(Creature opponent)
+    {
+        // Tchecking if the opponent is in the range.
+        if(opponent.getPos().distance(this.getPos()) > this.getDistAttMax())
+        {
+            System.out.println("The opponent " + opponent.getNom() + 
+                    " is to far from the Archer " + this.getNom());
+            return;
+        }
+        
+        // Tchecking the number of arrow.
+        if(nbFleches <= 0)
+        {
+            System.out.println("The Archer " + this.getNom() + 
+                    " has not enough arrow.");
+            return;
+        }
+        nbFleches--;
+        
+        Random rand = new Random();
+        
+        // random value between 1 (inclusive) and 100 (inclusive).
+        int rollTheDice = 1 + rand.nextInt(100); 
+        
+        if(rollTheDice < this.getPourcentageAtt())
+        {
+            System.out.println("The Archer " + this.getNom() + 
+                    " miss his attack.");
+            return;
+        }
+        System.out.println("The Archer " + this.getNom() + 
+                " succeeds in this attack and hit " + opponent.getNom() +
+                " with an arrow.");
+        opponent.setPtVie(Math.min(0, opponent.getPtVie() - this.getDegAtt()));
     }
 }

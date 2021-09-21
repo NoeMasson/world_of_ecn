@@ -5,6 +5,8 @@
  */
 package org.centrale.projet.objet;
 
+import java.util.Random;
+
 /**
  *
  * @author Valentin Molina valentin@molina.pro
@@ -26,12 +28,12 @@ public class Mage extends Personnage {
      * @param dM The amount of magical damage that inflict the character.
      * @param distMax The range at which the character can access.
      * @param pos The position of the character on the map.
-     * @param nbF The number of arrow of the archer.
+     * @param ptPar The amount of damage that the character can counter.
      */
     public Mage(String nom, int ptV, int ptM, int pA, int pP, int pM, int rM, 
-            int dA, int dM, int distMax, Point2D pos, int nbF)
+            int dA, int dM, int distMax, Point2D pos, int ptPar)
     {
-        super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos);
+        super(nom, ptV, ptM, pA, pP, pM, rM, dA, dM, distMax, pos, ptPar);
     }
     
     
@@ -53,6 +55,64 @@ public class Mage extends Personnage {
     public Mage()
     {
         super();
+        this.setNom("Mage");
     }
     
+    
+    /**
+     * The Mage try to cast a spell on his opponent.
+     * It the Mage succeed the cast of this spell the opponent can try to 
+     * counter it.
+     * @param opponent 
+     */
+    public void combattre(Creature opponent)
+    {
+        // Tchecking if the opponent is in the range.
+        if(opponent.getPos().distance(this.getPos()) > this.getDistAttMax())
+        {
+            System.out.println("The opponent " + opponent.getNom() + 
+                    " is to far from the Mage " + this.getNom());
+            return;
+        }
+        
+        // Tchecking the amount of mana.
+        if(this.getPtMana() <= 0)
+        {
+            System.out.println("The Mage " + this.getNom() + 
+                    " has not enough mana.");
+            return;
+        }
+        this.setPtMana(this.getPtMana() - 1);
+        
+        Random rand = new Random();
+        
+        // random value between 1 (inclusive) and 100 (inclusive).
+        int rollTheDice = 1 + rand.nextInt(100); 
+        
+        // Tchecking the success of the magical attack.
+        if(rollTheDice < this.getPourcentageMag())
+        {
+            System.out.println("The Mage " + this.getNom() + 
+                    " miss his attack.");
+            return;
+        }
+        System.out.println("The Mage " + this.getNom() + 
+                " succeeds in this attack and hit " + opponent.getNom() +
+                " with a spell.");
+        
+        // Tchecking the success of the counter.
+        int rollTheDiceDefence = 1 + rand.nextInt(100); 
+        if(rollTheDiceDefence < opponent.getPourcentageResistMag())
+        {
+            System.out.println("The opponent " + opponent.getNom() + 
+                    " fails to counter the attack.");
+            opponent.setPtVie(Math.min(0, 
+                    opponent.getPtVie() - this.getDegAtt()));
+        }
+        System.out.println("The opponent " + opponent.getNom() + 
+                    " counters the attack.");
+        opponent.setPtVie(Math.min(0, 
+                opponent.getPtVie() - Math.max(0, 
+                        this.getDegAtt() - opponent.getPtPar())));
+    }
 }
