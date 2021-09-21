@@ -101,7 +101,8 @@ public class Archer extends Personnage {
     public void combattre(Creature opponent)
     {
         // Tchecking if the opponent is in the range.
-        if(opponent.getPos().distance(this.getPos()) > this.getDistAttMax())
+        if((opponent.getPos().distance(this.getPos()) > this.getDistAttMax())
+                || (opponent.getPos().distance(this.getPos()) <= 1))
         {
             System.out.println("The opponent " + opponent.getNom() + 
                     " is to far from the Archer " + this.getNom());
