@@ -1,5 +1,5 @@
 package org.centrale.projet.objet;
-
+import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,11 +33,22 @@ public class TestSeance4 {
         float fin;
         
         
-        
+        /**
+         * Affichage du monde
+         */
         World testingWorld = new World(nbProta, nbObj, sizeMap);
         
         testingWorld.afficheWorld();
                
+        
+        /**
+         * Boucle de parcours des protagonistes
+         */
+        Iterator<Creature> listIt = testingWorld.protagonistes.iterator();
+        while(listIt.hasNext()){
+            Creature p = listIt.next();
+            p.affiche();
+        }
         
         
         
