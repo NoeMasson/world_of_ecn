@@ -18,8 +18,8 @@ public class World {
     private int nbProtagonistes;
     private int nbObjets;
     private int mapSize;
-    private List<Creature> protagonistes;
-    private List<Objet> objets;
+    public List<Creature> protagonistes;
+    public List<Objet> objets;
     private int nbArchers;
     private int nbGuerriers;
     private int nbMages;
@@ -36,6 +36,9 @@ public class World {
         this.nbObjets = nbObjets;
         this.mapSize = mapSize;
         this.computeDistribution();
+        
+        protagonistes = new LinkedList<>();
+        objets = new LinkedList<>();
         this.creeMondeAlea();
     }
     
@@ -46,6 +49,9 @@ public class World {
         this.nbObjets = 5;
         this.mapSize = 20;
         this.computeDistribution();
+        
+        protagonistes = new LinkedList<>();
+        objets = new LinkedList<>();
         this.creeMondeAlea();
     }
     
@@ -83,10 +89,41 @@ public class World {
      */
     public final void creeMondeAlea()
     {
-        /*for(int i = 0 ; i < nbArchers; i++)
+        // Generate protagonist List.
+        for(int i = 0 ; i < nbArchers; i++)
         {
             protagonistes.add(new Archer());
-        }*/
+        }
+        for(int i = 0 ; i < nbGuerriers; i++)
+        {
+            protagonistes.add(new Guerrier());
+        }
+        for(int i = 0 ; i < nbMages; i++)
+        {
+            protagonistes.add(new Mage());
+        }
+        for(int i = 0 ; i < nbPaysans; i++)
+        {
+            protagonistes.add(new Paysan());
+        }
+        for(int i = 0 ; i < nbLoups; i++)
+        {
+            protagonistes.add(new Loup());
+        }
+        for(int i = 0 ; i < nbLapins; i++)
+        {
+            protagonistes.add(new Lapin());
+        }
+        
+        // Generate object List.
+        for(int i = 0 ; i < nbSoins; i++)
+        {
+            objets.add(new Soin());
+        }
+        for(int i = 0 ; i < nbManas; i++)
+        {
+            objets.add(new Mana());
+        }
         
     }
     
