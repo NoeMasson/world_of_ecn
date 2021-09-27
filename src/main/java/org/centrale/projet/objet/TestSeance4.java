@@ -22,7 +22,7 @@ public class TestSeance4 {
         int nbObj;
         int sizeMap;
         
-        nbProta = 10;
+        nbProta = 100;
         nbObj = 5; 
         sizeMap = 20;
         

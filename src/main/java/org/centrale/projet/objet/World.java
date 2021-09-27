@@ -200,8 +200,8 @@ public class World {
     private int nbProtagonistes;
     private int nbObjets;
     private int mapSize;
-    private List<Creature> protagonistes;
-    private List<Objet> objets;
+    public List<Creature> protagonistes;
+    public List<Objet> objets;
     private int nbArchers;
     private int nbGuerriers;
     private int nbMages;
@@ -348,7 +348,8 @@ public class World {
                     }
                 }
                 positionOk = findOneNear && (!collision);
-            } 
+            }
+            protagonistes.get(index).setPos(pos);
         }
     }
     
@@ -377,8 +378,70 @@ public class World {
            " \t- "+getNbLapins()+" Lapins.\n\n"+
            " - "+getNbObjets()+" objets distributes as :\n"+
            " \t- "+getNbSoins()+" Potions de soin;\n"+       
-           " \t- "+getNbManas()+" Potions de mana.\n"  
+           " \t- "+getNbManas()+" Potions de mana.\n\n"  
            );
+        
+        char[][] positions = new char[mapSize][mapSize];
+        for(int i = 0; i < mapSize ; i ++){
+            for(int j = 0; j < mapSize; j++){
+                positions[i][j] = ' ';
+            }
+        }
+        
+        int counter = 0;
+        for(Creature c : protagonistes)
+        {
+            Point2D pos = c.getPos();
+            int x = pos.getX();
+            int y = pos.getY();
+            
+            if(c instanceof Guerrier){
+                positions[x][y] = 'G';
+                counter++;
+            }
+            else if(c instanceof Mage){
+                positions[x][y] = 'M';
+                counter++;
+            }
+            else if(c instanceof Archer){
+                positions[x][y] = 'A';
+                counter++;
+            }
+            else if(c instanceof Paysan){
+                positions[x][y] = 'P';
+                counter++;
+            }
+            else if(c instanceof Loup){
+                positions[x][y] = 'L';
+                counter++;
+            }
+            else if(c instanceof Lapin){
+                positions[x][y] = 'l';
+                counter++;
+            }
+            
+        }
+        
+        System.out.println(counter + " protagonistes found...");
+        
+        for(int i = 0; i < mapSize+2; i ++){
+            System.out.print("# ");
+        }
+        System.out.print('\n');
+        
+        for(int i = 0; i < mapSize; i ++){
+            System.out.print("# ");
+            for(int j = 0; j < mapSize; j ++){
+                System.out.print(positions[i][j]);
+                System.out.print(' ');
+            }
+            System.out.print("#\n");
+        }
+        
+        for(int i = 0; i < mapSize+2; i ++){
+            System.out.print("# ");
+        }
+        System.out.print('\n');
     }
     
     
