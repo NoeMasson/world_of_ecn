@@ -235,12 +235,22 @@ public class Creature {
     
     /**
      * Default constructor for Creature. 
-     * Each variables is initiated with default values (0 for int, null for 
-     * String, (0,0) for Point2D, ...)
+     * Each variables is initiated with default values :
+     * - 100 health points ;
+     * - 50% of attack, counter and magical resistance ;
+     * - 2 points of damage and 2 points of counter ;
+     * - a range of attack of 1.
      */
     public Creature()
     {
-        nom = "Crea";
+        this.ptVie = 100;
+        this.pourcentageAtt = 50;
+        this.pourcentagePar = 50;
+        this.pourcentageResistMag = 50;
+        this.degAtt = 2;
+        this.distAttMax = 1;
+        this.ptPar = 2;
+        this.nom = "Crea";
         this.pos = new Point2D();
     }
     
