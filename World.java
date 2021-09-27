@@ -14,12 +14,194 @@ import java.util.*;
  * @author Noé Masson
  */
 public class World {
+
+    /**
+     * @return the nbProtagonistes
+     */
+    public int getNbProtagonistes() {
+        return nbProtagonistes;
+    }
+
+    /**
+     * @param nbProtagonistes the nbProtagonistes to set
+     */
+    public void setNbProtagonistes(int nbProtagonistes) {
+        this.nbProtagonistes = nbProtagonistes;
+    }
+
+    /**
+     * @return the nbObjets
+     */
+    public int getNbObjets() {
+        return nbObjets;
+    }
+
+    /**
+     * @param nbObjets the nbObjets to set
+     */
+    public void setNbObjets(int nbObjets) {
+        this.nbObjets = nbObjets;
+    }
+
+    /**
+     * @return the mapSize
+     */
+    public int getMapSize() {
+        return mapSize;
+    }
+
+    /**
+     * @param mapSize the mapSize to set
+     */
+    public void setMapSize(int mapSize) {
+        this.mapSize = mapSize;
+    }
+
+    /**
+     * @return the protagonistes
+     */
+    public List<Creature> getProtagonistes() {
+        return protagonistes;
+    }
+
+    /**
+     * @param protagonistes the protagonistes to set
+     */
+    public void setProtagonistes(List<Creature> protagonistes) {
+        this.protagonistes = protagonistes;
+    }
+
+    /**
+     * @return the objets
+     */
+    public List<Objet> getObjets() {
+        return objets;
+    }
+
+    /**
+     * @param objets the objets to set
+     */
+    public void setObjets(List<Objet> objets) {
+        this.objets = objets;
+    }
+
+    /**
+     * @return the nbArchers
+     */
+    public int getNbArchers() {
+        return nbArchers;
+    }
+
+    /**
+     * @param nbArchers the nbArchers to set
+     */
+    public void setNbArchers(int nbArchers) {
+        this.nbArchers = nbArchers;
+    }
+
+    /**
+     * @return the nbGuerriers
+     */
+    public int getNbGuerriers() {
+        return nbGuerriers;
+    }
+
+    /**
+     * @param nbGuerriers the nbGuerriers to set
+     */
+    public void setNbGuerriers(int nbGuerriers) {
+        this.nbGuerriers = nbGuerriers;
+    }
+
+    /**
+     * @return the nbMages
+     */
+    public int getNbMages() {
+        return nbMages;
+    }
+
+    /**
+     * @param nbMages the nbMages to set
+     */
+    public void setNbMages(int nbMages) {
+        this.nbMages = nbMages;
+    }
+
+    /**
+     * @return the nbPaysans
+     */
+    public int getNbPaysans() {
+        return nbPaysans;
+    }
+
+    /**
+     * @param nbPaysans the nbPaysans to set
+     */
+    public void setNbPaysans(int nbPaysans) {
+        this.nbPaysans = nbPaysans;
+    }
+
+    /**
+     * @return the nbLoups
+     */
+    public int getNbLoups() {
+        return nbLoups;
+    }
+
+    /**
+     * @param nbLoups the nbLoups to set
+     */
+    public void setNbLoups(int nbLoups) {
+        this.nbLoups = nbLoups;
+    }
+
+    /**
+     * @return the nbLapins
+     */
+    public int getNbLapins() {
+        return nbLapins;
+    }
+
+    /**
+     * @param nbLapins the nbLapins to set
+     */
+    public void setNbLapins(int nbLapins) {
+        this.nbLapins = nbLapins;
+    }
+
+    /**
+     * @return the nbSoins
+     */
+    public int getNbSoins() {
+        return nbSoins;
+    }
+
+    /**
+     * @param nbSoins the nbSoins to set
+     */
+    public void setNbSoins(int nbSoins) {
+        this.nbSoins = nbSoins;
+    }
+
+    /**
+     * @return the nbManas
+     */
+    public int getNbManas() {
+        return nbManas;
+    }
+
+    /**
+     * @param nbManas the nbManas to set
+     */
+    public void setNbManas(int nbManas) {
+        this.nbManas = nbManas;
+    }
     
     private int nbProtagonistes;
     private int nbObjets;
     private int mapSize;
-    public List<Creature> protagonistes;
-    public List<Objet> objets;
+    private List<Creature> protagonistes;
+    private List<Objet> objets;
     private int nbArchers;
     private int nbGuerriers;
     private int nbMages;
@@ -70,18 +252,17 @@ public class World {
         
         int sum = A + M + G + P + Lo + La ;
         
-        nbArchers = nbProtagonistes*A / sum;
-        nbGuerriers = nbProtagonistes*G / sum;
-        nbMages = nbProtagonistes*M / sum;
+        setNbArchers(getNbProtagonistes() * A / sum);
+        setNbGuerriers(getNbProtagonistes() * G / sum);
+        setNbMages(getNbProtagonistes() * M / sum);
         //nbPaysans = nbProtagonistes*P / sum;
-        nbLoups = nbProtagonistes*Lo / sum;
-        nbLapins = nbProtagonistes*La / sum;
-        nbPaysans = nbProtagonistes - nbArchers - nbGuerriers - nbMages - 
-                nbLoups - nbLapins;
+        setNbLoups(getNbProtagonistes() * Lo / sum);
+        setNbLapins(getNbProtagonistes() * La / sum);
+        setNbPaysans(getNbProtagonistes() - getNbArchers() - getNbGuerriers() - getNbMages() - getNbLoups() - getNbLapins());
         
         // Generation of random potion distribtion.
-        nbSoins = rand.nextInt(nbObjets);
-        nbManas = nbObjets - nbSoins;
+        setNbSoins(rand.nextInt(getNbObjets()));
+        setNbManas(getNbObjets() - getNbSoins());
     }
     
     
@@ -92,44 +273,83 @@ public class World {
     public final void creeMondeAlea()
     {
         // Generate protagonist List.
-        for(int i = 0 ; i < nbArchers; i++)
+        for(int i = 0 ; i < getNbArchers(); i++)
         {
-            protagonistes.add(new Archer());
+            getProtagonistes().add(new Archer());
         }
-        for(int i = 0 ; i < nbGuerriers; i++)
+        for(int i = 0 ; i < getNbGuerriers(); i++)
         {
-            protagonistes.add(new Guerrier());
+            getProtagonistes().add(new Guerrier());
         }
-        for(int i = 0 ; i < nbMages; i++)
+        for(int i = 0 ; i < getNbMages(); i++)
         {
-            protagonistes.add(new Mage());
+            getProtagonistes().add(new Mage());
         }
-        for(int i = 0 ; i < nbPaysans; i++)
+        for(int i = 0 ; i < getNbPaysans(); i++)
         {
-            protagonistes.add(new Paysan());
+            getProtagonistes().add(new Paysan());
         }
-        for(int i = 0 ; i < nbLoups; i++)
+        for(int i = 0 ; i < getNbLoups(); i++)
         {
-            protagonistes.add(new Loup());
+            getProtagonistes().add(new Loup());
         }
-        for(int i = 0 ; i < nbLapins; i++)
+        for(int i = 0 ; i < getNbLapins(); i++)
         {
-            protagonistes.add(new Lapin());
+            getProtagonistes().add(new Lapin());
         }
         
         // Generate object List.
-        for(int i = 0 ; i < nbSoins; i++)
+        for(int i = 0 ; i < getNbSoins(); i++)
         {
-            objets.add(new Soin());
+            getObjets().add(new Soin());
         }
-        for(int i = 0 ; i < nbManas; i++)
+        for(int i = 0 ; i < getNbManas(); i++)
         {
-            objets.add(new Mana());
+            getObjets().add(new Mana());
         }
         
-        // Positionne
+        Random rand = new Random();
         
-        
+        // Position every protagonists.
+        int index;
+        int x = rand.nextInt(getMapSize());
+        int y = rand.nextInt(getMapSize());
+        Point2D pos = new Point2D(x, y);
+        getProtagonistes().get(0).setPos(pos);
+        for(index = 1; index < getProtagonistes().size(); index ++)
+        {
+            //Positionning the protagonist nb index in function of previous 
+            //ones.
+            boolean positionOk = false;
+            
+            while(!positionOk)
+            {   
+                x = rand.nextInt(getMapSize());
+                y = rand.nextInt(getMapSize());
+                pos = new Point2D(x,y);
+                boolean findOneNear = false;
+                boolean collision = false ;
+                for(int itr = 0 ; itr < index ; itr++)
+                {
+                    Creature current = protagonistes.get(itr);
+                    
+                    // Tcheck for collision.
+                    if(x == current.getPos().getX() &&
+                            y == current.getPos().getY())
+                    {
+                        collision = true;
+                        break;
+                    }
+                    
+                    // Search for a protagonist near the position.
+                    if((!findOneNear) && (pos.distance(current.getPos()) <= 3))
+                    {
+                        findOneNear = true;
+                    }
+                }
+                positionOk = findOneNear && (!collision);
+            } 
+        }
     }
     
     
@@ -147,18 +367,17 @@ public class World {
      */
     public void afficheWorld()
     {
-        System.out.print(
-           "This is a World of " + mapSize+"x"+mapSize + ". It contains :\n"+
-           " - "+nbProtagonistes+" protagonistes distributed as :\n"+
-           " \t- "+nbGuerriers+" Guerriers;\n"+
-           " \t- "+nbArchers+" Archers;\n"+
-           " \t- "+nbMages+" Mages;\n"+
-           " \t- "+nbPaysans+" Paysans;\n"+
-           " \t- "+nbLoups+" Loups;\n"+
-           " \t- "+nbLapins+" Lapins.\n\n"+
-           " - "+nbObjets+" objets distributes as :\n"+
-           " \t- "+nbSoins+" Potions de soin;\n"+       
-           " \t- "+nbManas+" Potions de mana.\n"  
+        System.out.print("This is a World of " + getMapSize()+"x"+getMapSize() + ". It contains :\n"+
+           " - "+getNbProtagonistes()+" protagonistes distributed as :\n"+
+           " \t- "+getNbGuerriers()+" Guerriers;\n"+
+           " \t- "+getNbArchers()+" Archers;\n"+
+           " \t- "+getNbMages()+" Mages;\n"+
+           " \t- "+getNbPaysans()+" Paysans;\n"+
+           " \t- "+getNbLoups()+" Loups;\n"+
+           " \t- "+getNbLapins()+" Lapins.\n\n"+
+           " - "+getNbObjets()+" objets distributes as :\n"+
+           " \t- "+getNbSoins()+" Potions de soin;\n"+       
+           " \t- "+getNbManas()+" Potions de mana.\n"  
            );
     }
     
