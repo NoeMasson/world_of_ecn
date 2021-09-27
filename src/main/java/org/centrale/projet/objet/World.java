@@ -388,7 +388,6 @@ public class World {
             }
         }
         
-        int counter = 0;
         for(Creature c : protagonistes)
         {
             Point2D pos = c.getPos();
@@ -397,32 +396,24 @@ public class World {
             
             if(c instanceof Guerrier){
                 positions[x][y] = 'G';
-                counter++;
             }
             else if(c instanceof Mage){
                 positions[x][y] = 'M';
-                counter++;
             }
             else if(c instanceof Archer){
                 positions[x][y] = 'A';
-                counter++;
             }
             else if(c instanceof Paysan){
                 positions[x][y] = 'P';
-                counter++;
             }
             else if(c instanceof Loup){
                 positions[x][y] = 'L';
-                counter++;
             }
             else if(c instanceof Lapin){
                 positions[x][y] = 'l';
-                counter++;
             }
             
         }
-        
-        System.out.println(counter + " protagonistes found...");
         
         for(int i = 0; i < mapSize+2; i ++){
             System.out.print("# ");

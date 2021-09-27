@@ -15,26 +15,16 @@ public class TestSeance4 {
     public static void main(String args[])
     {
         /** 
-         * Variables pour la définition du monde
+         * Variables pour la définition du monde de test.
          * 
          * */
-        int nbProta;
-        int nbObj;
-        int sizeMap;
-        
-        nbProta = 100;
-        nbObj = 5; 
-        sizeMap = 20;
-        
-        /**
-         * Variables temporelles
-         * */
-        float debut;
-        float fin;
+        int nbProta = 10;
+        int nbObj = 5;
+        int sizeMap = 20;
         
         
         /**
-         * Affichage du monde
+         * Affichage du monde.
          */
         World testingWorld = new World(nbProta, nbObj, sizeMap);
         
@@ -42,28 +32,68 @@ public class TestSeance4 {
                
         
         /**
-         * Boucle de parcours des protagonistes
+         * Boucle de parcours des protagonistes.
          */
-        /*Iterator<Creature> listIt = testingWorld.protagonistes.iterator();
+        /* Iterator<Creature> listIt = testingWorld.protagonistes.iterator();
         while(listIt.hasNext()){
             Creature p = listIt.next();
             p.affiche();
-        }*/
-        
-        
+        } */ 
         
         /**
-         * Tests de durée des différentes Collections
+         * Tests de performance différentes Collections
          */
-        debut = System.nanoTime();
-        
-        // insérer test de durée ici
-                        
-        fin = System.nanoTime();                   
-        System.out.println("Cette opération a duré "+(fin-debut));
-        
-          
+        System.out.println("\n------------------------------------------------------------------------------------------\n");
+        System.out.println("Test de performances avec une collections de 100 Creatures.");
+        timeTest(100);
+        System.out.println("\n------------------------------------------------------------------------------------------\n");
+        System.out.println("Test de performances avec une collections de 1000 Creatures.");
+        timeTest(1000);
+        System.out.println("\n------------------------------------------------------------------------------------------\n");
+        System.out.println("Test de performances avec une collections de 10000 Creatures.");
+        timeTest(10000);
+        System.out.println("\n------------------------------------------------------------------------------------------\n");
+        System.out.println("Test de performances avec une collections de 100000 Creatures.");
+        timeTest(100000);
+        System.out.println("\n------------------------------------------------------------------------------------------\n");
+        System.out.println("Test de performances avec une collections de 1000000 Creatures.");
+        timeTest(1000000);
+        System.out.println("\n------------------------------------------------------------------------------------------\n");
+       
               
+    }
+    
+    
+    public static void timeTest(int nbProta2)
+    {
+        int nbObj, sizeMap;
+        nbObj = 5; 
+        
+        long debut, fin;
+        
+        sizeMap = 2 * (int) Math.ceil(Math.sqrt(nbProta2));
+
+        World tempsWorld = new World(nbProta2, nbObj, sizeMap);
+        Iterator<Creature> listIt = tempsWorld.getProtagonistes().iterator();
+        //tempsWorld.afficheWorld();
+
+        // Parcours avec iterator :
+        
+        debut = System.nanoTime();
+        while(listIt.hasNext()){
+            Creature p = listIt.next();
+        }
+        fin = System.nanoTime();                   
+        System.out.println("Le parcours avec iterator a duré "+(fin-debut)+"ns");
+        
+        // Parcours avec indice :
+        
+        debut = System.nanoTime();
+        for(int i=0; i<nbProta2; i++){
+            Creature p = tempsWorld.getProtagonistes().get(i);
+        }
+        fin = System.nanoTime();
+        System.out.println("Le parcours avec indice a duré "+(fin-debut)+"ns");
     }
     
 }
