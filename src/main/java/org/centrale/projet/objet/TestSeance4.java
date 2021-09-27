@@ -44,11 +44,11 @@ public class TestSeance4 {
         /**
          * Boucle de parcours des protagonistes
          */
-        Iterator<Creature> listIt = testingWorld.protagonistes.iterator();
+        /*Iterator<Creature> listIt = testingWorld.protagonistes.iterator();
         while(listIt.hasNext()){
             Creature p = listIt.next();
             p.affiche();
-        }
+        }*/
         
         
         
