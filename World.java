@@ -142,7 +142,19 @@ public class World {
      */
     public void afficheWorld()
     {
-        
+        System.out.print(
+           "This is a World of " + mapSize+"x"+mapSize + ". It contains :\n"+
+           " - "+nbProtagonistes+" protagonistes distributed as :\n"+
+           " \t- "+nbGuerriers+" Guerriers;\n"+
+           " \t- "+nbArchers+" Archers;\n"+
+           " \t- "+nbMages+" Mages;\n"+
+           " \t- "+nbPaysans+" Paysans;\n"+
+           " \t- "+nbLoups+" Loups;\n"+
+           " \t- "+nbLapins+" Lapins.\n\n"+
+           " - "+nbObjets+" objets distributes as :\n"+
+           " \t- "+nbSoins+" Potions de soin;\n"+       
+           " \t- "+nbManas+" Potions de mana.\n"  
+           );
     }
     
     
