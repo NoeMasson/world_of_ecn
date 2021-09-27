@@ -128,4 +128,22 @@ public class Point2D {
     {
         System.out.println("[" + this.x + ";" + this.y + "]");
     }
+    
+    
+    /**
+     * Compute the geometrical barycenter of the point to an other point.
+     * One can use associativity property of the barycenter to compute the 
+     * barycenter of multiple point with a loop.
+     * @param other The point with which the barycenter is computed.
+     * @return The barycenter of the current Point2D and other.
+     */
+    public Point2D barycentre(Point2D other)
+    {
+        Point2D out = new Point2D();
+        
+        out.setX((other.getX() + this.x)/2);
+        out.setY((other.getY() + this.y)/2);
+        
+        return out;
+    }
 }

@@ -70,30 +70,37 @@ public class TestSeance4 {
         nbObj = 5; 
         
         long debut, fin;
+        Point2D bary1 = new Point2D();
+        Point2D bary2 = new Point2D();
         
         sizeMap = 2 * (int) Math.ceil(Math.sqrt(nbProta2));
 
+        System.out.print("Generating testing world of "+sizeMap+"x"+sizeMap+" ... ");
         World tempsWorld = new World(nbProta2, nbObj, sizeMap);
-        Iterator<Creature> listIt = tempsWorld.getProtagonistes().iterator();
+        System.out.print("Done.\n ");
         //tempsWorld.afficheWorld();
 
         // Parcours avec iterator :
         
         debut = System.nanoTime();
+        Iterator<Creature> listIt = tempsWorld.getProtagonistes().iterator();
+        bary1 = listIt.next().getPos();
         while(listIt.hasNext()){
-            Creature p = listIt.next();
+            bary1 = bary1.barycentre(listIt.next().getPos());
         }
         fin = System.nanoTime();                   
         System.out.println("Le parcours avec iterator a duré "+(fin-debut)+"ns");
+        System.out.println("Le barycentre se situe en : ("+bary1.getX()+","+bary1.getY()+")");
         
         // Parcours avec indice :
         
         debut = System.nanoTime();
-        for(int i=0; i<nbProta2; i++){
-            Creature p = tempsWorld.getProtagonistes().get(i);
+        bary2 = tempsWorld.getProtagonistes().get(0).getPos();
+        for(int i=1; i<nbProta2; i++){
+            bary2 = bary2.barycentre(tempsWorld.getProtagonistes().get(i).getPos());
         }
         fin = System.nanoTime();
         System.out.println("Le parcours avec indice a duré "+(fin-debut)+"ns");
+        System.out.println("Le barycentre se situe en : ("+bary2.getX()+","+bary2.getY()+")");
     }
-    
 }
