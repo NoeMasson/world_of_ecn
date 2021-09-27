@@ -73,9 +73,11 @@ public class World {
         nbArchers = nbProtagonistes*A / sum;
         nbGuerriers = nbProtagonistes*G / sum;
         nbMages = nbProtagonistes*M / sum;
-        nbPaysans = nbProtagonistes*P / sum;
+        //nbPaysans = nbProtagonistes*P / sum;
         nbLoups = nbProtagonistes*Lo / sum;
         nbLapins = nbProtagonistes*La / sum;
+        nbPaysans = nbProtagonistes - nbArchers - nbGuerriers - nbMages - 
+                nbLoups - nbLapins;
         
         // Generation of random potion distribtion.
         nbSoins = rand.nextInt(nbObjets);
@@ -124,6 +126,9 @@ public class World {
         {
             objets.add(new Mana());
         }
+        
+        // Positionne
+        
         
     }
     
