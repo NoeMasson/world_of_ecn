@@ -200,8 +200,8 @@ public class World {
     private int nbProtagonistes;
     private int nbObjets;
     private int mapSize;
-    public List<Creature> protagonistes;
-    public List<Objet> objets;
+    private List<Creature> protagonistes;
+    private List<Objet> objets;
     private int nbArchers;
     private int nbGuerriers;
     private int nbMages;
