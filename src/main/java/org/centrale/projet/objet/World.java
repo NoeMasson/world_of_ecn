@@ -16,6 +16,20 @@ import java.util.*;
 public class World {
 
     /**
+     * @return the joueur
+     */
+    public Joueur getJoueur() {
+        return joueur;
+    }
+
+    /**
+     * @param joueur the joueur to set
+     */
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
+    }
+
+    /**
      * @return the nbProtagonistes
      */
     public int getNbProtagonistes() {
@@ -210,6 +224,10 @@ public class World {
     private int nbLapins;
     private int nbSoins;
     private int nbManas;
+    /**
+     * The player of our game.
+     */
+    private Joueur joueur;
     
     
     public World(int nbProtagonistes, int nbObjets, int mapSize)
@@ -435,5 +453,43 @@ public class World {
         System.out.print('\n');
     }
     
-    
+    public void creationJoueur()
+    {
+        java.util.Scanner entree = new java.util.Scanner(System.in);
+        
+        System.out.print(
+                "Quelle classe choisissez vous ?" +
+                "1 -\tArcher ;" + 
+                "2 -\tGuerrier ;" +
+                "3 -\tMage.");
+        int choice=0;
+        String classe = new String("Mage");
+        while(choice != 1 || choice != 2 || choice != 3)
+        {
+            try{
+                choice = entree.nextInt();
+            }
+            catch (InputMismatchException ex) {
+                System.out.println("Entrez 1, 2 ou 3.");
+            }
+        }
+        
+        switch(choice){
+            case 1 :
+                classe = new String("Archer");
+                break;
+            case 2 :
+                classe = new String("Guerrier");
+                break;
+            case 3:
+            default :
+                //Allready a Mage.
+                break;
+             
+        }
+        System.out.println("Vous avez choisi d'être un " + classe);
+        System.out.println("");
+        System.out.println("Quel nom voulez-vous donner à votre personnage ?");
+        String name = entree.nextLine();
+    }
 }
