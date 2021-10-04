@@ -412,6 +412,8 @@ public class World {
             int x = pos.getX();
             int y = pos.getY();
             
+            System.out.println(c.getClass());
+            
             if(c instanceof Guerrier){
                 positions[x][y] = 'G';
             }
@@ -453,24 +455,26 @@ public class World {
         System.out.print('\n');
     }
     
-    public void creationJoueur()
+    public void creationJoueur() throws PlayerCreationException
     {
-        java.util.Scanner entree = new java.util.Scanner(System.in);
+        java.util.Scanner in = new java.util.Scanner(System.in);
         
         System.out.print(
-                "Quelle classe choisissez vous ?" +
-                "1 -\tArcher ;" + 
-                "2 -\tGuerrier ;" +
-                "3 -\tMage.");
+                "Quelle classe choisissez vous ?\n" +
+                "1 -\tArcher ;\n" + 
+                "2 -\tGuerrier ;\n" +
+                "3 -\tMage.\n");
         int choice=0;
         String classe = new String("Mage");
-        while(choice != 1 || choice != 2 || choice != 3)
+        while(choice != 1 && choice != 2 && choice != 3)
         {
+            System.out.println("Entrez 1, 2 ou 3.");
             try{
-                choice = entree.nextInt();
+                System.out.println("Trying...");
+                choice = Integer.parseInt(in.nextLine());
             }
-            catch (InputMismatchException ex) {
-                System.out.println("Entrez 1, 2 ou 3.");
+            catch (NumberFormatException ex) {
+                System.out.print("Vous devez entrer un entier ! ");
             }
         }
         
@@ -490,6 +494,10 @@ public class World {
         System.out.println("Vous avez choisi d'être un " + classe);
         System.out.println("");
         System.out.println("Quel nom voulez-vous donner à votre personnage ?");
-        String name = entree.nextLine();
+        String name = in.nextLine();
+        
+        joueur = new Joueur("org.centrale.projet.objet."+classe, name); 
+        //org.centrale.projet.objet.Archer
+        
     }
 }
