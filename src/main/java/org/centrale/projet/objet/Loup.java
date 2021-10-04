@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina
  * @author Noe Masson
  */
-public class Loup extends Monstre{
+public class Loup extends Monstre implements Combattant{
     
     
     /**
@@ -58,6 +58,7 @@ public class Loup extends Monstre{
      * If the Loup succeed his attack the opponent can try to counter.
      * @param opponent The opponent that the Loup try to hit.
      */
+    @Override
     public void combattre(Creature opponent)
     {
         // Tchecking if the opponent is in the range.

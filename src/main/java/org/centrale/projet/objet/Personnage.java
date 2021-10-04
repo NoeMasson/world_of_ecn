@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Personnage extends Creature {
+public abstract class Personnage extends Creature {
     
     /**
      * Number of mana point of the character.
@@ -45,7 +45,7 @@ public class Personnage extends Creature {
      * @param pos The position of the character on the map.
      * @param ptPar The amount of damage that the character can counter.
      */
-    public Personnage(String nom, int ptV, int ptM, int pA, int pP, int pM, 
+    protected Personnage(String nom, int ptV, int ptM, int pA, int pP, int pM, 
             int rM, int dA, int dM, int distMax, Point2D pos, int ptPar)
     {
         super(nom, ptV, pA, pP, rM, dA, distMax, pos, ptPar);
@@ -59,7 +59,7 @@ public class Personnage extends Creature {
      * Copy constructor for Personnage.
      * @param perso : Personnage to copy.
      */
-    public Personnage(Personnage perso)
+    protected Personnage(Personnage perso)
     {
         super(perso);
         this.ptMana = perso.getPtMana();
@@ -73,7 +73,7 @@ public class Personnage extends Creature {
      * Each variables is initiated with default values (0 for int, null for 
      * String, (0,0) for Point2D, ...)
      */
-    public Personnage()
+    protected Personnage()
     {
         super();
         this.setNom("Perso");

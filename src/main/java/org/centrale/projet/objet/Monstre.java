@@ -10,7 +10,7 @@ package org.centrale.projet.objet;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Monstre extends Creature {
+public abstract class Monstre extends Creature {
     
     
     /**
@@ -25,7 +25,7 @@ public class Monstre extends Creature {
      * @param pos The position of the character on the map.
      * @param ptPar The amount of damage that the character can counter.
      */
-    public Monstre(String nom, int ptV, int pA, int pP, int rM, int dA, 
+    protected Monstre(String nom, int ptV, int pA, int pP, int rM, int dA, 
             int distMax, Point2D pos, int ptPar)
     {
         super(nom, ptV, pA, pP, rM, dA, distMax, pos, ptPar);
@@ -35,7 +35,7 @@ public class Monstre extends Creature {
      * Copy constructor from another Monster.
      * @param m Monstre to copy.
      */
-    public Monstre(Monstre m)
+    protected Monstre(Monstre m)
     {
         super(m);
     }
@@ -43,7 +43,7 @@ public class Monstre extends Creature {
     /**
      * Constructor without specifying anything. Use default values.
      */
-    public Monstre()
+    protected Monstre()
     {
         super();
         this.setNom("Monstre");

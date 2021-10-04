@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Archer extends Personnage {
+public class Archer extends Personnage implements Combattant{
 
     /**
      * The number of arrows that remain to the archer.
@@ -98,6 +98,7 @@ public class Archer extends Personnage {
      * In both cases, the Archer loses an arrow.
      * @param opponent The Creature on which the Archer is shooting.
      */
+    @Override
     public void combattre(Creature opponent)
     {
         // Tchecking if the opponent is in the range.

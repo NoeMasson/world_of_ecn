@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Mage extends Personnage {
+public class Mage extends Personnage implements Combattant{
     
     
     /**
@@ -65,6 +65,7 @@ public class Mage extends Personnage {
      * counter it.
      * @param opponent 
      */
+    @Override
     public void combattre(Creature opponent)
     {
         // Tchecking if the opponent is in the range.

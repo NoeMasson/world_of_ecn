@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Guerrier extends Personnage {
+public class Guerrier extends Personnage implements Combattant{
     
     /**
      * Guerrier constructor which specify all the attributes.
@@ -64,6 +64,7 @@ public class Guerrier extends Personnage {
      * If the Warrior succeed his attack the opponent can try to counter.
      * @param opponent The opponent that the Warrior try to hit.
      */
+    @Override
     public void combattre(Creature opponent)
     {
         // Tchecking if the opponent is in the range.

@@ -8,11 +8,11 @@ package org.centrale.projet.objet;
 import java.util.Random;
 
 /**
- *
+ * 
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Creature {
+public abstract class Creature implements Deplacable {
 
     /**
      * @return the ptPar
@@ -201,7 +201,7 @@ public class Creature {
      * @param pos The position of the character on the map.
      * @param ptPar The amount of damage that the character can counter.
      */
-    public Creature(String nom, int pV, int pA, int pP, int rM, int dA, 
+    protected Creature(String nom, int pV, int pA, int pP, int rM, int dA, 
             int distMax, Point2D pos, int ptPar)
     {
         this.nom = nom;
@@ -220,7 +220,7 @@ public class Creature {
      * Copy constructor for Creature.
      * @param crea : Creature to copy.
      */
-    public Creature(Creature crea)
+    protected Creature(Creature crea)
     {
         this.nom = crea.getNom();
         this.ptVie = crea.getPtVie();
@@ -241,7 +241,7 @@ public class Creature {
      * - 2 points of damage and 2 points of counter ;
      * - a range of attack of 1.
      */
-    public Creature()
+    protected Creature()
     {
         this.ptVie = 100;
         this.pourcentageAtt = 50;
@@ -260,6 +260,7 @@ public class Creature {
      * The creature can move in 8-adjacent and can also stay in the same 
      * position. Each position as 1 chance out of 9 to be pick. 
      */
+    @Override
     public void deplace()
     {
         Random rand = new Random();
