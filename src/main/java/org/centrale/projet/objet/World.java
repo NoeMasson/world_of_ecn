@@ -497,7 +497,6 @@ public class World {
         String name = in.nextLine();
         
         joueur = new Joueur("org.centrale.projet.objet."+classe, name); 
-        //org.centrale.projet.objet.Archer
         
     }
 }

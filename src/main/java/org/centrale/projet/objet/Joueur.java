@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package org.centrale.projet.objet;
+import java.util.Random;
 
 /**
  *
@@ -43,18 +44,55 @@ public class Joueur {
         try{
             Class classType = Class.forName(classeName);
             perso = (Personnage) classType.newInstance();
-            perso.setNom(name);
         } catch (ClassNotFoundException e) {
             System.out.println("A ClassNotFoundException occurs.");
-            // Does not seem to be an issue with this exception... exception should be hidden by the finally.
-            System.out.print(e.getCause());
+            PlayerCreationException ex = new PlayerCreationException("Can't create object of class "+classeName);
+            throw ex;
+        } catch (InstantiationException e) {
+            System.out.println("A InstantiationException occurs.");
+            PlayerCreationException ex = new PlayerCreationException("Can't create object of class "+classeName);
+            throw ex;
+        } catch (IllegalAccessException e) {
+            System.out.println("A IllegalAccessException occurs.");
             PlayerCreationException ex = new PlayerCreationException("Can't create object of class "+classeName);
             throw ex;
         }
-        finally {
-            PlayerCreationException e = new PlayerCreationException("Can't create object of class "+classeName);
-            throw e;
-        } 
+        perso.setNom(name);
+        
+        Random rand = new Random();
+        
+        perso.setPtVie(80 + rand.nextInt(20));
+        perso.setDegAtt(10+rand.nextInt(10));
+        perso.setDegMag(5+rand.nextInt(10));
+        perso.setDistAttMax(1);
+        perso.setPos(new Point2D(0,0));
+        perso.setPourcentageAtt(20+rand.nextInt(80));
+        perso.setPourcentageMag(20+rand.nextInt(80));
+        perso.setPourcentagePar(10+rand.nextInt(90));
+        perso.setPourcentageResistMag(10+rand.nextInt(90));
+        perso.setPtMana(10+rand.nextInt(10));
+        perso.setPtPar(5+rand.nextInt(5));
+        if(classeName.contains("Guerrier"))
+        {
+            perso.setDegMag(15+rand.nextInt(10));
+            perso.setPourcentageAtt(50+rand.nextInt(50));
+            perso.setPourcentagePar(40+rand.nextInt(60));
+            perso.setPtPar(10+rand.nextInt(5));
+        }
+        else if(classeName.contains("Archer"))
+        {
+            perso.setDistAttMax(rand.nextInt(8));
+            ((Archer)perso).setNbFleches(rand.nextInt(30));
+        }
+        else if(classeName.contains("Mage"))
+        {
+            perso.setDegMag(10+rand.nextInt(15));
+            perso.setDistAttMax(rand.nextInt(5));
+            perso.setPourcentageMag(70+rand.nextInt(30));
+            perso.setPourcentageResistMag(40+rand.nextInt(60));
+            perso.setPtMana(30+rand.nextInt(10));
+        }
+        
     }
     
 }
