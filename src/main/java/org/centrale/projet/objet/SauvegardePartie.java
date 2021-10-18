@@ -70,7 +70,7 @@ public class SauvegardePartie {
         }
     }
     
-    private void sauvegarderPartie(World world){
+    public void sauvegarderPartie(World world){
         try{
             //Saving Size of the world
             writer.write("Largeur "+world.getLargeur());
