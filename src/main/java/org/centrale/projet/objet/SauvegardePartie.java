@@ -60,10 +60,17 @@ public class SauvegardePartie {
         try {
             writer = new BufferedWriter(new FileWriter(fileName));
         }
+        // on attrape l'exception si on a pas pu creer le fichier
+        catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } 
         catch (IOException ex) {
             ex.printStackTrace();
         }
     }
     
+    private void sauvegarderPartie(World world){
+        
+    }
     
 }

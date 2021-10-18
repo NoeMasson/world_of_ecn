@@ -9,6 +9,6 @@ package org.centrale.projet.objet;
  *
  * @author Noe
  */
-public interface IO {
-    
+public interface GetTexteSauvegarde {
+    public String getTexteSauvegarde();
 }

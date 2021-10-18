@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public abstract class Creature implements Deplacable {
+public abstract class Creature implements Deplacable, GetTexteSauvegarde {
 
     /**
      * @return the ptPar
@@ -288,5 +288,11 @@ public abstract class Creature implements Deplacable {
             "- se situe en :"
             );
         pos.affiche();
-    }    
+    }
+
+    public String getTexteSauvegarde(){
+        return(nom+" "+ptVie+" "+pourcentageAtt+" "+pourcentagePar+" "+pourcentageResistMag+" "+degAtt+" "+distAttMax
+                +" "+ptPar+" "+pos.getX()+" "+pos.getY());
+        
+    }
 }
