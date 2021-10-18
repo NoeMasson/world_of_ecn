@@ -117,4 +117,20 @@ public class Mage extends Personnage implements Combattant{
                 opponent.getPtVie() - Math.max(0, 
                         this.getDegMag() - opponent.getPtPar())));
     }
+    
+    /**
+     * 
+     * @return string corresponding to the caracteristics of the Mage
+     * @Override overides the Creature methode
+     * 
+     */
+    public String getTexteSauvegarde(){
+        return("Mage "+getNom()+" "+getPtVie()+" "+" "+getPtMana()+" "+getPourcentageAtt()+" "
+                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
+                +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
+        
+        
+   
+    }
 }

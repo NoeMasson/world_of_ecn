@@ -135,4 +135,14 @@ public class Archer extends Personnage implements Combattant{
                 " with an arrow.");
         opponent.setPtVie(Math.max(0, opponent.getPtVie() - this.getDegAtt()));
     }
+    
+    public String getTexteSauvegarde(){
+        return("Archer "+getNom()+" "+getPtVie()+" "+" "+getPtMana()+" "+getPourcentageAtt()+" "
+                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
+                +" "+getPtPar()+" "+nbFleches+" "+getPos().getX()+" "+getPos().getY());
+        
+        
+   
+    }
 }

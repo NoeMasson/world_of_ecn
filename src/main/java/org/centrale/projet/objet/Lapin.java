@@ -47,4 +47,20 @@ public class Lapin extends Monstre {
         super();
         this.setNom("Lapin");
     }
+    
+    /**
+     * 
+     * @return string corresponding to the caracteristics of the Lapin
+     * @Override overides the Creature methode
+     * 
+     */
+    public String getTexteSauvegarde(){
+        return("Lapin "+getPtVie()+" "+" "+getPourcentageAtt()+" "
+                +getPourcentagePar()+" "+
+                +getPourcentageResistMag()+" "+getDegAtt()+" "+getDistAttMax()
+                +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
+        
+        
+   
+    }
 }

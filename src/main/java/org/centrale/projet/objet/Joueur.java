@@ -11,7 +11,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Joueur {
+public class Joueur implements GetTexteSauvegarde {
 
     /**
      * @return the perso
@@ -93,6 +93,19 @@ public class Joueur {
             perso.setPtMana(30+rand.nextInt(10));
         }
         
+    }
+    
+    /**
+     * 
+     * @return string corresponding to the caracteristics of the Guerrier
+     * @Override overides the Creature methode
+     * 
+     */
+    public String getTexteSauvegarde(){
+        return("Joueur "+perso.getTexteSauvegarde());
+        
+        
+   
     }
     
 }

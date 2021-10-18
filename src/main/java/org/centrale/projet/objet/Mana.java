@@ -26,4 +26,9 @@ public class Mana extends Potion{
         super();       
     }
     
+    public String getTexteSauvegarde(){
+        return("Mana "+getQuantiteRestore()+" "+getPos().getX()+" "+getPos().getY());
+        
+    }
+    
 }

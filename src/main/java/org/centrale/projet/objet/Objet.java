@@ -10,7 +10,7 @@ package org.centrale.projet.objet;
  * @author Noe Masson
  * @author Valentin Molina
  */
-public class Objet {
+public class Objet implements GetTexteSauvegarde{
     
     
     private String nom;
@@ -79,5 +79,9 @@ public class Objet {
     }
     
 
+    public String getTexteSauvegarde(){
+        return(nom+" "+pos.getX()+" "+pos.getY());
+        
+    }
     
 }
