@@ -16,6 +16,34 @@ import java.util.*;
 public class World {
 
     /**
+     * @return the largeur
+     */
+    public int getLargeur() {
+        return largeur;
+    }
+
+    /**
+     * @param largeur the largeur to set
+     */
+    public void setLargeur(int largeur) {
+        this.largeur = largeur;
+    }
+
+    /**
+     * @return the longueur
+     */
+    public int getLongueur() {
+        return longueur;
+    }
+
+    /**
+     * @param longueur the longueur to set
+     */
+    public void setLongueur(int longueur) {
+        this.longueur = longueur;
+    }
+
+    /**
      * @return the joueur
      */
     public Joueur getJoueur() {
@@ -55,20 +83,6 @@ public class World {
      */
     public void setNbObjets(int nbObjets) {
         this.nbObjets = nbObjets;
-    }
-
-    /**
-     * @return the mapSize
-     */
-    public int getMapSize() {
-        return mapSize;
-    }
-
-    /**
-     * @param mapSize the mapSize to set
-     */
-    public void setMapSize(int mapSize) {
-        this.mapSize = mapSize;
     }
 
     /**
@@ -211,9 +225,11 @@ public class World {
         this.nbManas = nbManas;
     }
     
+    private int largeur;
+    private int longueur;
+    
     private int nbProtagonistes;
     private int nbObjets;
-    private int mapSize;
     private List<Creature> protagonistes;
     private List<Objet> objets;
     private int nbArchers;
@@ -229,12 +245,23 @@ public class World {
      */
     private Joueur joueur;
     
+    /**
+     * Constructor used to create a world while reading a save file.
+     * @param longueur The length of the map. 
+     * @param largeur The width of the map.
+     */
+    public World(int longueur, int largeur)
+    {
+        this.largeur = largeur;
+        this.longueur = longueur;
+    }
     
     public World(int nbProtagonistes, int nbObjets, int mapSize)
     {   
         this.nbProtagonistes = nbProtagonistes;
         this.nbObjets = nbObjets;
-        this.mapSize = mapSize;
+        this.largeur = mapSize;
+        this.longueur = mapSize;
         this.computeDistribution();
         
         protagonistes = new LinkedList<>();
@@ -247,7 +274,8 @@ public class World {
     {   
         this.nbProtagonistes = 10;
         this.nbObjets = 5;
-        this.mapSize = 20;
+        this.largeur = 20;
+        this.longueur = 20;
         this.computeDistribution();
         
         protagonistes = new LinkedList<>();
@@ -330,8 +358,8 @@ public class World {
         
         // Position every protagonists.
         int index;
-        int x = rand.nextInt(getMapSize());
-        int y = rand.nextInt(getMapSize());
+        int x = rand.nextInt(getLargeur());
+        int y = rand.nextInt(getLongueur());
         Point2D pos = new Point2D(x, y);
         getProtagonistes().get(0).setPos(pos);
         for(index = 1; index < getProtagonistes().size(); index ++)
@@ -342,8 +370,8 @@ public class World {
             
             while(!positionOk)
             {   
-                x = rand.nextInt(getMapSize());
-                y = rand.nextInt(getMapSize());
+                x = rand.nextInt(getLargeur());
+                y = rand.nextInt(getLongueur());
                 pos = new Point2D(x,y);
                 boolean findOneNear = false;
                 boolean collision = false ;
@@ -386,7 +414,7 @@ public class World {
      */
     public void afficheWorld()
     {
-        System.out.print("This is a World of " + getMapSize()+"x"+getMapSize() + ". It contains :\n"+
+        System.out.print("This is a World of " + getLargeur()+"x"+getLongueur() + ". It contains :\n"+
            " - "+getNbProtagonistes()+" protagonistes distributed as :\n"+
            " \t- "+getNbGuerriers()+" Guerriers;\n"+
            " \t- "+getNbArchers()+" Archers;\n"+
@@ -399,9 +427,9 @@ public class World {
            " \t- "+getNbManas()+" Potions de mana.\n\n"  
            );
         
-        char[][] positions = new char[mapSize][mapSize];
-        for(int i = 0; i < mapSize ; i ++){
-            for(int j = 0; j < mapSize; j++){
+        char[][] positions = new char[getLargeur()][getLongueur()];
+        for(int i = 0; i < getLargeur() ; i ++){
+            for(int j = 0; j < getLongueur(); j++){
                 positions[i][j] = ' ';
             }
         }
@@ -435,21 +463,21 @@ public class World {
             
         }
         
-        for(int i = 0; i < mapSize+2; i ++){
+        for(int i = 0; i < getLargeur()+2; i ++){
             System.out.print("# ");
         }
         System.out.print('\n');
         
-        for(int i = 0; i < mapSize; i ++){
+        for(int i = 0; i < getLargeur(); i ++){
             System.out.print("# ");
-            for(int j = 0; j < mapSize; j ++){
+            for(int j = 0; j < getLongueur(); j ++){
                 System.out.print(positions[i][j]);
                 System.out.print(' ');
             }
             System.out.print("#\n");
         }
         
-        for(int i = 0; i < mapSize+2; i ++){
+        for(int i = 0; i < getLargeur()+2; i ++){
             System.out.print("# ");
         }
         System.out.print('\n');
