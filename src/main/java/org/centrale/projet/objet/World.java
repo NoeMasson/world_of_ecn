@@ -412,7 +412,7 @@ public class World {
             int x = pos.getX();
             int y = pos.getY();
             
-            System.out.println(c.getClass());
+            //System.out.println(c.getClass());
             
             if(c instanceof Guerrier){
                 positions[x][y] = 'G';
@@ -470,7 +470,6 @@ public class World {
         {
             System.out.println("Entrez 1, 2 ou 3.");
             try{
-                System.out.println("Trying...");
                 choice = Integer.parseInt(in.nextLine());
             }
             catch (NumberFormatException ex) {
