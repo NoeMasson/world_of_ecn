@@ -7,7 +7,8 @@ package org.centrale.projet.objet;
 
 /**
  *
- * @author Noe
+ * @author Noe Masson
+ * @author Valentin Molina
  */
 public interface GetTexteSauvegarde {
     public String getTexteSauvegarde();
