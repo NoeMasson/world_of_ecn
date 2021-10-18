@@ -26,4 +26,9 @@ public class Soin extends Potion{
         super();       
     }
     
+    
+    public String getTexteSauvegarde(){
+        return("Soin "+getQuantiteRestore()+" "+getPos().getX()+" "+getPos().getY());
+        
+    }
 }

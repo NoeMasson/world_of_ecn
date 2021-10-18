@@ -136,8 +136,14 @@ public class Archer extends Personnage implements Combattant{
         opponent.setPtVie(Math.max(0, opponent.getPtVie() - this.getDegAtt()));
     }
     
+    /**
+     * 
+     * @return string corresponding to the caracteristics of the Archer
+     * @Override overides the Creature methode
+     * 
+     */
     public String getTexteSauvegarde(){
-        return("Archer "+getNom()+" "+getPtVie()+" "+" "+getPtMana()+" "+getPourcentageAtt()+" "
+        return("Archer "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
                 +getPourcentageMag()+" "+getPourcentagePar()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+nbFleches+" "+getPos().getX()+" "+getPos().getY());

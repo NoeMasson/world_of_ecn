@@ -50,4 +50,20 @@ public class Paysan extends Personnage {
         super();
         this.setNom("Paysan");
     }
+    
+    /**
+     * 
+     * @return string corresponding to the caracteristics of the Paysan
+     * @Override overides the Creature methode
+     * 
+     */
+    public String getTexteSauvegarde(){
+        return("Paysan "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
+                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
+                +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
+        
+        
+   
+    }
 }

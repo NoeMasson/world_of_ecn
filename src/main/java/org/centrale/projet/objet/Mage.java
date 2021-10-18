@@ -125,7 +125,7 @@ public class Mage extends Personnage implements Combattant{
      * 
      */
     public String getTexteSauvegarde(){
-        return("Mage "+getNom()+" "+getPtVie()+" "+" "+getPtMana()+" "+getPourcentageAtt()+" "
+        return("Mage "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
                 +getPourcentageMag()+" "+getPourcentagePar()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());

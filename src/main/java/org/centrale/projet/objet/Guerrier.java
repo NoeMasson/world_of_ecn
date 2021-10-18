@@ -114,7 +114,7 @@ public class Guerrier extends Personnage implements Combattant{
      * 
      */
     public String getTexteSauvegarde(){
-        return("Guerrier "+getNom()+" "+getPtVie()+" "+" "+getPtMana()+" "+getPourcentageAtt()+" "
+        return("Guerrier "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
                 +getPourcentageMag()+" "+getPourcentagePar()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
