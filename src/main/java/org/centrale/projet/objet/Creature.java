@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public abstract class Creature implements Deplacable, GetTexteSauvegarde {
+public abstract class Creature implements Deplacable, IO {
 
     /**
      * @return the ptPar
@@ -254,6 +254,17 @@ public abstract class Creature implements Deplacable, GetTexteSauvegarde {
         this.pos = new Point2D();
     }
     
+    
+    /**
+     * Constructor used to load a Creature with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    protected Creature(String data) throws WrongSaveFileFormatException
+    {
+        this.load(data);
+    }
+        
     
     /**
      * This function moves the creature randomly around it's initial position.

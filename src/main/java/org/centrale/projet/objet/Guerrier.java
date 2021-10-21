@@ -59,6 +59,17 @@ public class Guerrier extends Personnage implements Combattant{
     
     
     /**
+     * Constructor used to load a Guerrier with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    public Guerrier(String data) throws WrongSaveFileFormatException
+    {
+        super(data);
+    }
+    
+    
+    /**
      * Fighting method for the Warrior. 
      * The Warrior can hit a Creature adjacent.
      * If the Warrior succeed his attack the opponent can try to counter.
@@ -109,13 +120,13 @@ public class Guerrier extends Personnage implements Combattant{
     
     /**
      * 
-     * @return string corresponding to the caracteristics of the Guerrier
-     * @Override overides the Creature methode
+     * @return string corresponding to the characteristics of the Guerrier
      * 
      */
+    @Override
     public String getTexteSauvegarde(){
         return("Guerrier "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
-                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentagePar()+" "+getPourcentageMag()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
         

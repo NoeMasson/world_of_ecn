@@ -6,6 +6,7 @@
 package org.centrale.projet.objet;
 
 import java.util.Random;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -84,6 +85,69 @@ public class Archer extends Personnage implements Combattant{
     
     
     /**
+     * Constructor used to load a Archer with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    public Archer(String data) throws WrongSaveFileFormatException
+    {
+        this.load(data);
+    }
+    
+    
+    /**
+     * Method used to load a Archer from a line of a save file that 
+     * represents a Archer.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    @Override
+    public void load(String data) throws WrongSaveFileFormatException
+    {
+        StringTokenizer tokenizer = new StringTokenizer(data, " ");
+        int nbFields = 15;
+        try{
+            int x=0,y=0;
+            for(int i = 0; i < nbFields ;i++){
+                if(!tokenizer.hasMoreTokens()){
+                    WrongSaveFileFormatException ex = 
+                        new WrongSaveFileFormatException("The line : "+data+
+                                " doesn't follow the right format. At least a "
+                                        + "field is missing.");
+                    throw ex;
+                }
+                String field = tokenizer.nextToken();
+                switch(i){
+                    case 1 -> this.setNom(field);
+                    case 2 -> this.setPtVie(Integer.parseInt(field));
+                    case 3 -> this.setPtMana(Integer.parseInt(field));
+                    case 4 -> this.setPourcentageAtt(Integer.parseInt(field));
+                    case 5 -> this.setPourcentagePar(Integer.parseInt(field));
+                    case 6 -> this.setPourcentageMag(Integer.parseInt(field));
+                    case 7 -> this.setPourcentageResistMag(Integer.parseInt(field));
+                    case 8 -> this.setDegAtt(Integer.parseInt(field));
+                    case 9 -> this.setDegMag(Integer.parseInt(field));
+                    case 10 -> this.setDistAttMax(Integer.parseInt(field));
+                    case 11 -> this.setPtPar(Integer.parseInt(field));
+                    case 12 -> this.setNbFleches(Integer.parseInt(field));
+                    case 13 -> x = Integer.parseInt(field);
+                    case 14 -> {
+                        y = Integer.parseInt(field);
+                        this.setPos(new Point2D(x,y));
+                    } 
+                } 
+                    
+            }
+        } catch(NumberFormatException e) {
+            WrongSaveFileFormatException ex = 
+                new WrongSaveFileFormatException("The line : "+data+
+                        " doesn't follow the right format. A number is incorrect.");
+            throw ex;
+        }
+    }
+    
+    
+    /**
      * Print the values of each attributes into the terminal.
      */
     public void affiche()
@@ -144,7 +208,7 @@ public class Archer extends Personnage implements Combattant{
      */
     public String getTexteSauvegarde(){
         return("Archer "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
-                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentagePar()+" "+getPourcentageMag()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+nbFleches+" "+getPos().getX()+" "+getPos().getY());
         

@@ -10,7 +10,7 @@ package org.centrale.projet.objet;
  * @author Noe Masson
  * @author Valentin Molina
  */
-public class Objet implements GetTexteSauvegarde{
+abstract class Objet implements IO{
     
     
     private String nom;
@@ -19,22 +19,37 @@ public class Objet implements GetTexteSauvegarde{
     
     private int nbUtilisation;
     
+    
     public Objet(String name, Point2D p, int n){
         nom = name;
         pos = new Point2D(p);
         nbUtilisation = n;
     }   
     
+    
     public Objet(Objet o){
         this.nom = o.nom;
         this.pos = o.pos;
         this.nbUtilisation = o.nbUtilisation;
     }
+    
+    
     public Objet(){
         nom = "objet";
         pos = new Point2D();
         nbUtilisation = 1;
     }
+    
+    
+    /**
+     * Constructor used to load an Objet with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws WrongSaveFileFormatException 
+     */
+    public Objet(String data) throws WrongSaveFileFormatException{
+        this.load(data);
+    }
+    
     
     /**
      * @return the nom

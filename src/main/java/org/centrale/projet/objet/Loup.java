@@ -53,6 +53,17 @@ public class Loup extends Monstre implements Combattant{
     
     
     /**
+     * Constructor used to load a Mage with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    public Loup(String data) throws WrongSaveFileFormatException
+    {
+        super(data);
+    }
+    
+    
+    /**
      * Fighting method for the Loup. 
      * The Loup can hit a Creature adjacent.
      * If the Loup succeed his attack the opponent can try to counter.
@@ -109,7 +120,7 @@ public class Loup extends Monstre implements Combattant{
      * 
      */
     public String getTexteSauvegarde(){
-        return("Loup "+getPtVie()+" "+" "+getPourcentageAtt()+" "
+        return("Loup "+getNom()+" "+getPtVie()+" "+getPourcentageAtt()+" "
                 +getPourcentagePar()+" "+
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());

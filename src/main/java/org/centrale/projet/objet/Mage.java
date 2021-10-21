@@ -60,6 +60,17 @@ public class Mage extends Personnage implements Combattant{
     
     
     /**
+     * Constructor used to load a Mage with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    public Mage(String data) throws WrongSaveFileFormatException
+    {
+        super(data);
+    }
+    
+    
+    /**
      * The Mage try to cast a spell on his opponent.
      * It the Mage succeed the cast of this spell the opponent can try to 
      * counter it.
@@ -120,13 +131,13 @@ public class Mage extends Personnage implements Combattant{
     
     /**
      * 
-     * @return string corresponding to the caracteristics of the Mage
-     * @Override overides the Creature methode
+     * @return string corresponding to the characteristics of the Mage
      * 
      */
+    @Override
     public String getTexteSauvegarde(){
         return("Mage "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
-                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentagePar()+" "+getPourcentageMag()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
         

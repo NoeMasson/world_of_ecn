@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 
 /**
@@ -29,11 +30,13 @@ public class ChargementPartie {
     
     
     public World chargerPartie() throws IOException, 
-            WrongSaveFileFormatException{
+            WrongSaveFileFormatException,
+            InstantiationException,
+            IllegalAccessException,
+            IllegalArgumentException,
+            InvocationTargetException {
         World world;
         StringTokenizer tokenizer;
-        
-        world = new World(20, 20);
         
         int width, length;
         
@@ -106,6 +109,7 @@ public class ChargementPartie {
                     new WrongSaveFileFormatException("File " + this.file + 
                             " does not follow the right format : " +
                             "Second line should be the length.");
+            throw ex;
         }
         if(!tokenizer.hasMoreTokens())
         {
@@ -126,7 +130,6 @@ public class ChargementPartie {
         }
         
         world = new World(width, length);
-        System.out.println("Width : " + width + " - Length : " + length);
         
         // Following lines are the characters.
         line = reader.readLine();
@@ -140,19 +143,36 @@ public class ChargementPartie {
                                 "A line is empty.");
                 throw ex;
             }
+            String className = tokenizer.nextToken();
             try{
-                Class classType = Class.forName(tokenizer.nextToken());
-                Class[] types = new Class[] {StringTokenizer.class};
+                Class classType = Class.forName("org.centrale.projet.objet."+className);
+                Class[] types = new Class[] {String.class};
                 Constructor construct = classType.getConstructor(types);
-                Object obj = construct.newInstance((Object[])new StringTokenizer[]{tokenizer});
+                Object obj = construct.newInstance((Object[])new String[]{line});
+                if(obj instanceof Creature){
+                    world.getProtagonistes().add((Creature) obj);
+                }
+                else if(obj instanceof Objet){
+                    world.getObjets().add((Objet) obj);
+                }
+                else if(obj instanceof Joueur){
+                    world.setJoueur((Joueur) obj);
+                }
             } catch(ClassNotFoundException e) {
                 WrongSaveFileFormatException ex = 
                         new WrongSaveFileFormatException("File " + this.file + 
                                 " does not follow the right format : " +
-                                "A line is empty.");
+                                "The class "+className+" doesn't exist.");
+                throw ex;
+            } catch(NoSuchMethodException e) {
+                WrongSaveFileFormatException ex = 
+                        new WrongSaveFileFormatException(
+                                "A issue was encounter while reading the file : " + 
+                                this.file + "\n" +
+                                "The class "+className+" doesn't have the right constructor.");
                 throw ex;
             }
-             
+            line = reader.readLine();
         }
         
         

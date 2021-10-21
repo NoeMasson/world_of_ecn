@@ -27,6 +27,16 @@ public class Soin extends Potion{
     }
     
     
+    /**
+     * Constructor used to load a Soin with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws WrongSaveFileFormatException 
+     */
+    public Soin(String data) throws WrongSaveFileFormatException{
+        super(data);
+    }
+    
+    
     public String getTexteSauvegarde(){
         return("Soin "+getQuantiteRestore()+" "+getPos().getX()+" "+getPos().getY());
         

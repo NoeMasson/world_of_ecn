@@ -48,6 +48,18 @@ public class Lapin extends Monstre {
         this.setNom("Lapin");
     }
     
+    
+    /**
+     * Constructor used to load a Mage with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    public Lapin(String data) throws WrongSaveFileFormatException
+    {
+        super(data);
+    }
+    
+    
     /**
      * 
      * @return string corresponding to the caracteristics of the Lapin
@@ -55,7 +67,7 @@ public class Lapin extends Monstre {
      * 
      */
     public String getTexteSauvegarde(){
-        return("Lapin "+getPtVie()+" "+" "+getPourcentageAtt()+" "
+        return("Lapin "+getNom()+" "+getPtVie()+" "+getPourcentageAtt()+" "
                 +getPourcentagePar()+" "+
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());

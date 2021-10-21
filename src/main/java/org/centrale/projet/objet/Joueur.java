@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package org.centrale.projet.objet;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public class Joueur implements GetTexteSauvegarde {
+public class Joueur implements IO {
 
     /**
      * @return the perso
@@ -31,6 +36,7 @@ public class Joueur implements GetTexteSauvegarde {
      * The Personnage player by the player.
      */
     private Personnage perso ;
+    
     
     /**
      * Only Player constructor. Used by World.
@@ -95,17 +101,84 @@ public class Joueur implements GetTexteSauvegarde {
         
     }
     
+    
     /**
-     * 
-     * @return string corresponding to the caracteristics of the Guerrier
-     * @Override overides the Creature methode
-     * 
+     * Constructor used to load a Joueur with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
      */
+    public Joueur(String data) throws WrongSaveFileFormatException
+    {
+        this.load(data);
+    }
+    
+    
+    /**
+     * Method used to load a Joueur from a line of a save file that 
+     * represents a Joueur.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    @Override
+    public void load(String data) throws WrongSaveFileFormatException
+    {
+        StringTokenizer tokenizer = new StringTokenizer(data, " ");
+        if(!tokenizer.hasMoreTokens())
+        {
+            WrongSaveFileFormatException ex = 
+                new WrongSaveFileFormatException("The line : "+data+
+                            " doesn't follow the right format. At least a "
+                                    + "field is missing.");
+            throw ex;  
+        }
+        tokenizer.nextToken();
+        if(!tokenizer.hasMoreTokens())
+        {
+            WrongSaveFileFormatException ex = 
+                new WrongSaveFileFormatException("The line : "+data+
+                            " doesn't follow the right format. At least a "
+                                    + "field is missing.");
+            throw ex;
+        }
+        String className = tokenizer.nextToken();
+        try{
+            Class classType = Class.forName("org.centrale.projet.objet."
+                    +className);
+            Class[] types = new Class[] {String.class};
+            Constructor construct = classType.getConstructor(types);
+            this.setPerso((Personnage) construct.newInstance(
+                    (Object[])new String[]{data.substring(7, data.length())}));
+        } catch(ClassNotFoundException e) {
+            WrongSaveFileFormatException ex = 
+                new WrongSaveFileFormatException("The line : "+data+
+                                " doesn't follow the right format.");
+            throw ex;
+        } catch(NoSuchMethodException ex) {
+            System.out.println("NoSuchMethodException occurs...");
+            Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            System.out.println("InstantiationException occurs...");
+            Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            System.out.println("IllegalAccessException occurs...");
+            Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("IllegalArgumentException occurs...");
+            Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            System.out.println("InvocationTargetException occurs...");
+            Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
+    /**
+     * @return string corresponding to the characteristics of the Joueur
+     */
+    @Override
     public String getTexteSauvegarde(){
         return("Joueur "+perso.getTexteSauvegarde());
-        
-        
-   
     }
     
 }

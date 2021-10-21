@@ -51,15 +51,26 @@ public class Paysan extends Personnage {
         this.setNom("Paysan");
     }
     
+    
+    /**
+     * Constructor used to load a Paysan with data from a save file.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    public Paysan(String data) throws WrongSaveFileFormatException
+    {
+        super(data);
+    }
+    
     /**
      * 
      * @return string corresponding to the caracteristics of the Paysan
-     * @Override overides the Creature methode
      * 
      */
+    @Override
     public String getTexteSauvegarde(){
         return("Paysan "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
-                +getPourcentageMag()+" "+getPourcentagePar()+" "
+                +getPourcentagePar()+" "+getPourcentageMag()+" "
                 +getPourcentageResistMag()+" "+getDegAtt()+" "+getDegMag()+" "+getDistAttMax()
                 +" "+getPtPar()+" "+getPos().getX()+" "+getPos().getY());
         

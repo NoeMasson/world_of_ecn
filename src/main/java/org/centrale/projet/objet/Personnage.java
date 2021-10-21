@@ -5,7 +5,7 @@
  */
 package org.centrale.projet.objet;
 
-import java.util.Random;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -69,6 +69,16 @@ public abstract class Personnage extends Creature {
     
     
     /**
+     * Constructor used to load a Personnage with data from a save file.
+     * @param data A line of data coming from a save file.
+     */
+    protected Personnage(String data) throws WrongSaveFileFormatException
+    {
+        super(data);
+    }
+    
+    
+    /**
      * Default constructor for Personnage. 
      * Each variables is initiated with default values (0 for int, null for 
      * String, (0,0) for Point2D, ...)
@@ -79,6 +89,57 @@ public abstract class Personnage extends Creature {
         this.setNom("Perso");
     }
 
+    
+    /**
+     * Method used to load a Personnage from a line of a save file that 
+     * represents a Personnage.
+     * @param data A line of data coming from a save file.
+     * @throws org.centrale.projet.objet.WrongSaveFileFormatException
+     */
+    @Override
+    public void load(String data) throws WrongSaveFileFormatException
+    {
+        StringTokenizer tokenizer = new StringTokenizer(data, " ");
+        int nbFields = 14;
+        try{
+            int x=0,y=0;
+            for(int i = 0; i < nbFields ;i++){
+                if(!tokenizer.hasMoreTokens()){
+                    WrongSaveFileFormatException ex = 
+                        new WrongSaveFileFormatException("The line : "+data+
+                                " doesn't follow the right format. At least a "
+                                        + "field is missing.");
+                    throw ex;
+                }
+                String field = tokenizer.nextToken();
+                switch(i){
+                    case 1 -> this.setNom(field);
+                    case 2 -> this.setPtVie(Integer.parseInt(field));
+                    case 3 -> this.setPtMana(Integer.parseInt(field));
+                    case 4 -> this.setPourcentageAtt(Integer.parseInt(field));
+                    case 5 -> this.setPourcentagePar(Integer.parseInt(field));
+                    case 6 -> this.setPourcentageMag(Integer.parseInt(field));
+                    case 7 -> this.setPourcentageResistMag(Integer.parseInt(field));
+                    case 8 -> this.setDegAtt(Integer.parseInt(field));
+                    case 9 -> this.setDegMag(Integer.parseInt(field));
+                    case 10 -> this.setDistAttMax(Integer.parseInt(field));
+                    case 11 -> this.setPtPar(Integer.parseInt(field));
+                    case 12 -> x = Integer.parseInt(field);
+                    case 13 -> {
+                        y = Integer.parseInt(field);
+                        this.setPos(new Point2D(x,y));
+                    } 
+                } 
+                    
+            }
+        } catch(NumberFormatException e) {
+            WrongSaveFileFormatException ex = 
+                new WrongSaveFileFormatException("The line : "+data+
+                        " doesn't follow the right format. A number is incorrect.");
+            throw ex;
+        }
+    }
+    
 
     /**
      * @return the ptMana

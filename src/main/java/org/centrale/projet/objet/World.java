@@ -254,6 +254,9 @@ public class World {
     {
         this.largeur = largeur;
         this.longueur = longueur;
+        
+        protagonistes = new LinkedList<>();
+        objets = new LinkedList<>();
     }
     
     public World(int nbProtagonistes, int nbObjets, int mapSize)

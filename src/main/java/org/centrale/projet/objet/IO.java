@@ -8,8 +8,12 @@ package org.centrale.projet.objet;
 /**
  *
  * @author Noe Masson
- * @author Valentin Molina
+ * @author Valentin Molina valentin@molina.pro
  */
-public interface GetTexteSauvegarde {
+public interface IO {
+    
     public String getTexteSauvegarde();
+    
+    public void load(String data) throws WrongSaveFileFormatException;
+    
 }
