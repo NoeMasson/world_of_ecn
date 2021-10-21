@@ -14,8 +14,13 @@ public class TestSeance6 {
     {
          
         // Testing save methods
-        SauvegardePartie save = new SauvegardePartie("testSave.txt");
+        SauvegardePartie save = new SauvegardePartie("testSave");
         World world = new World();
         save.sauvegarderPartie(world);
+        save.sauvegarderPartie(world);
+        
+        SauvegardePartie save2 = new SauvegardePartie();
+        save2.sauvegarderPartie(world);
+        save2.sauvegarderPartie(world);
     }
 }

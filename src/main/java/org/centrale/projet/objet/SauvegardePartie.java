@@ -45,15 +45,17 @@ public class SauvegardePartie {
     
     private String fileName;
     private BufferedWriter writer;
+    private int saveNumber;
     
     protected SauvegardePartie(){
-        fileName = "testSave.txt";
+        fileName = generateRandomFileName();
         try {
             writer = new BufferedWriter(new FileWriter(fileName));
         }
         catch (IOException ex) {
             ex.printStackTrace();
         }
+        saveNumber=1;
     }
     
     protected SauvegardePartie(String name){
@@ -68,9 +70,21 @@ public class SauvegardePartie {
         catch (IOException ex) {
             ex.printStackTrace();
         }
+        saveNumber=1;
     }
     
+    /**
+     * Save the current state of the world in a text file
+     * @param world 
+     */
     public void sauvegarderPartie(World world){
+        
+        try {
+            writer = new BufferedWriter(new FileWriter(fileName+saveNumber+".txt"));
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
         try{
             //Saving Size of the world
             writer.write("Largeur "+world.getLargeur());
@@ -90,8 +104,14 @@ public class SauvegardePartie {
                 writer.newLine();
             }
             
-            writer.write(world.getJoueur().getTexteSauvegarde());
-            writer.newLine();
+            try{
+                writer.write(world.getJoueur().getTexteSauvegarde());
+                writer.newLine();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            
         }
         
         
@@ -119,6 +139,27 @@ public class SauvegardePartie {
                 ex.printStackTrace();
                 }
             }
+        saveNumber+=1;
+    }
+    /**
+     * Generate a random text file name from the alphabet
+     * @return 
+     */
+    public String generateRandomFileName(){
+        
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 20; //length of the filename
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+        .limit(targetStringLength)
+        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+        .toString();
+        
+        
+
+    return(generatedString);
     }
 }
         
