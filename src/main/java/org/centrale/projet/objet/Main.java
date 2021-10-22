@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] argv){
         World world = null;
         java.util.Scanner in = new java.util.Scanner(System.in);
+        SauvegardePartie save = new SauvegardePartie(); 
         while(world == null)
         {
             System.out.println("Voulez-vous charger une partie ou en commencer une nouvelle ?");
@@ -40,10 +41,20 @@ public class Main {
             switch(choice){
                 case 1 -> 
                 {
-                    //To finish
+                    //To test
+                    boolean loaded = false;
+                    
+                    while(!loaded){
+                        
+                    System.out.println("Rentrez le nom du fichier que vous souhaitez charger (sans le .txt de fin)");
+                    String file;
+                    file = in.nextLine();
+                    String fileName = file + ".txt";
+                    
                     try {
                     ChargementPartie loader = new ChargementPartie(fileName);
                     world = loader.chargerPartie();
+                    loaded = true;
 
                     } catch(FileNotFoundException e){
                         System.out.println("File not found.");
@@ -60,9 +71,36 @@ public class Main {
                     } catch (InvocationTargetException ex) {
                         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    }
                 }
                 case 2 -> {
-                    //To finish
+                    //To test
+                    System.out.println("Voulez-vous donner un nom à votre partie ?");
+                    System.out.println("1 - Oui.");
+                    System.out.println("2 - Non.");
+                    System.out.println("");
+                    System.out.print("Entrez le numéro correspond à votre choix : ");
+                    int choice2 = 0;
+                    while(choice2 != 1 && choice2 != 2){
+                        try{
+                            choice2 = Integer.parseInt(in.nextLine());
+                        } catch(NumberFormatException ex) {
+                        System.out.println("Vous devez entrer un entier ! Recommencez :");
+                        }    
+                    }
+                    switch(choice2){
+                        
+                        case 1 ->{
+                           
+                            System.out.println("Entrez le nom du fichier (sans le .txt de fin):");
+                            String file = in.nextLine() + ".txt";
+                            save.setFileName(file);
+                            }
+                        
+                        case 2 ->{
+                            System.out.println("Le nom de la sauvegarde est : "+ save.getFileName());
+                        }
+                    }
                 }
             }
             
@@ -93,10 +131,10 @@ public class Main {
                     world.tourDeJeu();
                 }
                 case 2 -> {
-                    // to finish
+                    save.sauvegarderPartie(world);
                 }
                 case 3 -> {
-                    //to finish
+                    save.sauvegarderPartie(world);
                     choice = 4;
                 }
             }
