@@ -211,9 +211,24 @@ public class Joueur implements IO {
         }
         
         int choice = 0;
-        while(choice == 0  && posOk[choice] == 0){
-            //TO FINISH
+        java.util.Scanner in = new java.util.Scanner(System.in);
+        
+        while(choice == 0){
+            try{
+                choice = Integer.parseInt(in.nextLine());
+                if(choice < 1 || choice > 8){
+                    choice = 0;
+                    System.out.println("Vous devez entrer un nombre entre 1 et 8.");
+                } else if(posOk[choice-1] == 0){
+                    choice = 0;
+                    System.out.println("Cette position est occupée. Vous devez choisir une autre position.");
+                }
+            } catch(NumberFormatException e) {
+                System.out.println("Vous devez entrer un nombre entre 1 et 8.");
+            }
         }
+        
+        this.getPerso().deplace(choice);
     }
     
     
@@ -223,7 +238,25 @@ public class Joueur implements IO {
      * World.opponent().
      */
     public void fight(ArrayList<Creature> opponents){
+        int n = opponents.size();
+        System.out.println("Vous pouvez attaquer "+n+" ennemies.");
+        for(int i = 0 ; i < n ; i++){
+            System.out.print(i+" ");
+            opponents.get(i).affiche();
+        }
+        System.out.println("Quel personnage souhaitez vous attaquer ?");
         
+        java.util.Scanner in = new java.util.Scanner(System.in);
+        int choice = -1;
+        while(choice < 0 && choice >= n){
+            try{
+                choice = Integer.parseInt(in.nextLine());
+            } catch(NumberFormatException e) {
+                System.out.println("Vous devez entrer un nombre entre 0 et "+n+".");
+            }
+        }
+        
+        this.getPerso().combattre(opponents.get(choice));
     }
     
 }

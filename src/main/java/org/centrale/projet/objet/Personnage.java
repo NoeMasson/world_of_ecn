@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
  * @author Valentin Molina valentin@molina.pro
  * @author Noé Masson
  */
-public abstract class Personnage extends Creature {
+public abstract class Personnage extends Creature implements Combattant {
     
     /**
      * Number of mana point of the character.

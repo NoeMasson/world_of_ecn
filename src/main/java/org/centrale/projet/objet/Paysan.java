@@ -5,6 +5,8 @@
  */
 package org.centrale.projet.objet;
 
+import java.util.Random;
+
 /**
  *
  * @author Valentin Molina valentin@molina.pro
@@ -76,5 +78,17 @@ public class Paysan extends Personnage {
         
         
    
+    }
+    
+    
+    /**
+     * Fighting method for the Paysan.
+     * @param opponent The opponent that the Warrior try to hit.
+     */
+    @Override
+    public void combattre(Creature opponent)
+    {
+        System.out.println("Aaaaaaah!");
+        System.out.println("The Paysan "+this.getNom()+" doesn't know how to fight.");
     }
 }

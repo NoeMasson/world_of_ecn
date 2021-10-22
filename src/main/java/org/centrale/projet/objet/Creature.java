@@ -268,18 +268,50 @@ public abstract class Creature implements Deplacable, IO {
     
     /**
      * This function moves the creature randomly around it's initial position.
-     * The creature can move in 8-adjacent and can also stay in the same 
-     * position. Each position as 1 chance out of 9 to be pick. 
+     * The creature can move in 8-adjacent.
+     * The box are encoded as follow :
+     *   -> x
+     * y |1|2|3| delta(-1,-1) = 1
+     * | |8|O|4| O = position pos.
+     * ' |7|6|5|
+     * @param box The integer coding the box. Should be between 1 and 8.
      */
     @Override
-    public void deplace()
+    public void deplace(int box)
     {
-        Random rand = new Random();
-        
-        int dx = rand.nextInt(2) - 1;
-        int dy = rand.nextInt(2) - 1;
-        
-        this.pos.translate(dx, dy);
+        int x, y;
+        x = this.getPos().getX();
+        y = this.getPos().getY();
+        switch(box){
+            case 1 -> {
+                this.getPos().setX(x-1);
+                this.getPos().setY(y-1);
+            }
+            case 2 -> {
+                this.getPos().setY(y-1);
+            }
+            case 3 -> {
+                this.getPos().setX(x+1);
+                this.getPos().setY(y-1);
+            }
+            case 4 -> {
+                this.getPos().setX(x+1);
+            }
+            case 5 -> {
+                this.getPos().setX(x+1);
+                this.getPos().setY(y+1);
+            }
+            case 6 -> {
+                this.getPos().setY(y+1);
+            }
+            case 7 -> {
+                this.getPos().setX(x-1);
+                this.getPos().setY(y+1);
+            }
+            case 8 -> {
+                this.getPos().setX(x-1);
+            }
+        }
     }
     
     

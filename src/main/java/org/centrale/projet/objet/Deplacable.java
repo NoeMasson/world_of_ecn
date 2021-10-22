@@ -13,6 +13,6 @@ package org.centrale.projet.objet;
  */
 public interface Deplacable {
 
-    public void deplace();
+    public void deplace(int box);
     
 }
