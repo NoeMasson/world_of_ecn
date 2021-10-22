@@ -116,9 +116,8 @@ public class Loup extends Monstre implements Combattant{
     /**
      * 
      * @return string corresponding to the caracteristics of the Loup
-     * @Override overides the Creature methode
-     * 
      */
+    @Override
     public String getTexteSauvegarde(){
         return("Loup "+getNom()+" "+getPtVie()+" "+getPourcentageAtt()+" "
                 +getPourcentagePar()+" "+

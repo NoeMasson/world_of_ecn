@@ -63,9 +63,9 @@ public class Lapin extends Monstre {
     /**
      * 
      * @return string corresponding to the caracteristics of the Lapin
-     * @Override overides the Creature methode
      * 
      */
+    @Override
     public String getTexteSauvegarde(){
         return("Lapin "+getNom()+" "+getPtVie()+" "+getPourcentageAtt()+" "
                 +getPourcentagePar()+" "+

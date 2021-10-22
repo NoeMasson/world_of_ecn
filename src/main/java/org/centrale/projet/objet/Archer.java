@@ -203,9 +203,8 @@ public class Archer extends Personnage implements Combattant{
     /**
      * 
      * @return string corresponding to the caracteristics of the Archer
-     * @Override overides the Creature methode
-     * 
      */
+    @Override
     public String getTexteSauvegarde(){
         return("Archer "+getNom()+" "+getPtVie()+" "+getPtMana()+" "+getPourcentageAtt()+" "
                 +getPourcentagePar()+" "+getPourcentageMag()+" "
