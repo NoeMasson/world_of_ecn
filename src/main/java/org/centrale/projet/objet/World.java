@@ -553,7 +553,7 @@ public class World {
         }
         switch(choice){
             case 1 -> {
-                getJoueur().move(
+                this.getJoueur().move(
                     this.surroundingObj(getJoueur().getPerso().getPos()),
                     this.surroundingOpponents(getJoueur().getPerso().getPos()));
             }
