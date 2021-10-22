@@ -255,8 +255,8 @@ public class World {
         this.largeur = largeur;
         this.longueur = longueur;
         
-        protagonistes = new LinkedList<>();
-        objets = new LinkedList<>();
+        protagonistes = new ArrayList<>();
+        objets = new ArrayList<>();
     }
     
     public World(int nbProtagonistes, int nbObjets, int mapSize)
@@ -267,8 +267,8 @@ public class World {
         this.longueur = mapSize;
         this.computeDistribution();
         
-        protagonistes = new LinkedList<>();
-        objets = new LinkedList<>();
+        protagonistes = new ArrayList<>();
+        objets = new ArrayList<>();
         this.creeMondeAlea();
     }
     
@@ -281,13 +281,13 @@ public class World {
         this.longueur = 20;
         this.computeDistribution();
         
-        protagonistes = new LinkedList<>();
-        objets = new LinkedList<>();
+        protagonistes = new ArrayList<>();
+        objets = new ArrayList<>();
         this.creeMondeAlea();
     }
     
     
-    private final void computeDistribution()
+    private void computeDistribution()
     {
         Random rand = new Random();
         
@@ -408,7 +408,8 @@ public class World {
      */
     public void tourDeJeu()
     {
-        
+        this.afficheWorld();
+        this.playJoueur();
     }
     
     
@@ -486,6 +487,7 @@ public class World {
         System.out.print('\n');
     }
     
+    
     public void creationJoueur() throws PlayerCreationException
     {
         java.util.Scanner in = new java.util.Scanner(System.in);
@@ -556,7 +558,8 @@ public class World {
                     this.surroundingOpponents(getJoueur().getPerso().getPos()));
             }
             case 2 -> {
-                System.out.println("Work in progresse...");
+                this.getJoueur().fight(
+                    this.canAttack(this.getJoueur().getPerso()));
             }
         }
         
@@ -658,6 +661,23 @@ public class World {
             }
         }
         return surroundingObjets;
+    }
+    
+    
+    /**
+     * Select the Creature in World which can be hit by perso.
+     * @param perso The Creature which try to hit.
+     * @return The Creature that can be hit by perso.
+     */
+    private ArrayList<Creature> canAttack(Creature perso){
+        ArrayList<Creature> atRange = new ArrayList<Creature>();
+        for(Creature c : this.getProtagonistes()){
+            if(c.getPos().distance(perso.getPos()) <= perso.getDistAttMax())
+            {
+                atRange.add(c);
+            }
+        }
+        return atRange;
     }
     
 }

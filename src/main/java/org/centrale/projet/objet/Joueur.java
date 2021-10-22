@@ -6,6 +6,7 @@
 package org.centrale.projet.objet;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -203,8 +204,9 @@ public class Joueur implements IO {
             }
             if(surroundingObj[i] != null){
                 System.out.println("Sur la case "+i+1+" se trouve l'objet suivant :");
-                surroundingObj[i].affiche();
+                //surroundingObj[i].affiche();
                 System.out.println("Vous pouvez vous y déplacer.");
+                System.out.println("WARNING : l'utilisation des objets n'est pas encore prises en compte.");
             }
         }
         
@@ -220,7 +222,7 @@ public class Joueur implements IO {
      * @param opponents The opponents that surround the player according to 
      * World.opponent().
      */
-    public void fight(Creature[] opponents){
+    public void fight(ArrayList<Creature> opponents){
         
     }
     
