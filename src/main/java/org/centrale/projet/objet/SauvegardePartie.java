@@ -49,27 +49,11 @@ public class SauvegardePartie {
     
     protected SauvegardePartie(){
         fileName = generateRandomFileName();
-        try {
-            writer = new BufferedWriter(new FileWriter(fileName));
-        }
-        catch (IOException ex) {
-            ex.printStackTrace();
-        }
         saveNumber=1;
     }
     
     protected SauvegardePartie(String name){
         fileName = name;
-        try {
-            writer = new BufferedWriter(new FileWriter(fileName));
-        }
-        // on attrape l'exception si on a pas pu creer le fichier
-        catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } 
-        catch (IOException ex) {
-            ex.printStackTrace();
-        }
         saveNumber=1;
     }
     
