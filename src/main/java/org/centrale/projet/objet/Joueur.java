@@ -181,4 +181,47 @@ public class Joueur implements IO {
         return("Joueur "+perso.getTexteSauvegarde());
     }
     
+    
+    /**
+     * This method implements the move mechanics for the player.
+     * @param surroundingObj The objects that surround the player according to 
+     * World.surroundingObj().
+     * @param surroundingOpponents The opponents that surround the player according to 
+     * World.opponent().
+     */
+    public void move(Objet[] surroundingObj, Creature[] surroundingOpponents){
+        System.out.println("Vous avez choisi de vous déplacer.");
+        int[] posOk = new int[]{1, 1, 1,
+                                1,    1, 
+                                1, 1, 1};
+        for(int i = 0; i < 8; i++){
+            if(surroundingOpponents[i] != null){
+                System.out.println("La case "+i+1+" est occupée par :");
+                surroundingOpponents[i].affiche();
+                System.out.println("Vous ne pouvez pas vous y déplacer.");
+                System.out.println(posOk[i] = 0);
+            }
+            if(surroundingObj[i] != null){
+                System.out.println("Sur la case "+i+1+" se trouve l'objet suivant :");
+                surroundingObj[i].affiche();
+                System.out.println("Vous pouvez vous y déplacer.");
+            }
+        }
+        
+        int choice = 0;
+        while(choice == 0  && posOk[choice] == 0){
+            //TO FINISH
+        }
+    }
+    
+    
+    /**
+     * This method implements the fight mechanics for the player.
+     * @param opponents The opponents that surround the player according to 
+     * World.opponent().
+     */
+    public void fight(Creature[] opponents){
+        
+    }
+    
 }

@@ -529,4 +529,135 @@ public class World {
         joueur = new Joueur("org.centrale.projet.objet."+classe, name); 
         
     }
+    
+    
+    public void playJoueur(){
+        
+        java.util.Scanner in = new java.util.Scanner(System.in);
+        
+        System.out.println("Souhaitez-vous combattre ou vous déplacer ?");
+        System.out.println("1 - Déplacement.");
+        System.out.println("2 - Combattre.");
+        System.out.println("");
+        int choice = 0;
+        while(choice != 1 && choice != 2){
+            try{
+                System.out.println("Entrez 1 ou 2 en fonction de votre choix.");
+                System.out.println("");
+                choice = Integer.parseInt(in.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.print("Vous devez entrer un entier ! ");
+            }
+        }
+        switch(choice){
+            case 1 -> {
+                getJoueur().move(
+                    this.surroundingObj(getJoueur().getPerso().getPos()),
+                    this.surroundingOpponents(getJoueur().getPerso().getPos()));
+            }
+            case 2 -> {
+                System.out.println("Work in progresse...");
+            }
+        }
+        
+    }
+    
+    
+    /**
+     * This method is used to compute the opponent which surround a specific 
+     * position.
+     * It returns a Creature[] of size 8 which encode the 8 positions around pos.
+     * It used the following convention :
+     *   -> x
+     * y |1|2|3| delta(-1,-1) = 1
+     * | |8|O|4| O = position pos.
+     * ' |7|6|5|
+     * @param pos The position O.
+     * @return The list of opponent which surround the position pos.
+     */
+    private Creature[] surroundingOpponents(Point2D pos){
+        Creature[] opponents = new Creature[8];
+        
+        for(Creature c : this.getProtagonistes()){
+            if(c.getPos().distance(pos) < 2){
+                int deltaX, deltaY;
+                deltaX = pos.getX() - c.getPos().getX();
+                deltaY = pos.getY() - c.getPos().getY();
+                switch(deltaX){
+                    case -1 :
+                        switch(deltaY){
+                            case -1 -> opponents[1] = c;
+                            case  0 -> opponents[8] = c;
+                            case  1 -> opponents[7] = c;
+                        }
+                        break;
+                    case 0 :
+                        switch(deltaY){
+                            case -1 -> opponents[2] = c;
+                            case  1 -> opponents[6] = c;
+                        }
+                        break;
+                    case 1 :
+                        switch(deltaY){
+                            case -1 -> opponents[3] = c;
+                            case  0 -> opponents[4] = c;
+                            case  1 -> opponents[5] = c;
+                        }
+                        break;
+                }
+                    
+            }
+        }
+        return opponents;
+    }
+    
+    
+    /**
+     * This method is used to compute the opponent which surround a specific 
+     * position.
+     * It returns a Creature[] of size 8 which encode the 8 positions around pos.
+     * It used the following convention :
+     *   -> x
+     * y |1|2|3| delta(-1,-1) = 1
+     * | |8|O|4| O = position pos.
+     * ' |7|6|5|
+     * @param pos The position O.
+     * @return The list of opponent which surround the position pos.
+     */
+    private Objet[] surroundingObj(Point2D pos){
+        Objet[] surroundingObjets = new Objet[8];
+        
+        for(Objet o : this.getObjets()){
+            if(o.getPos().distance(pos) < 2){
+                int deltaX, deltaY;
+                deltaX = pos.getX() - o.getPos().getX();
+                deltaY = pos.getY() - o.getPos().getY();
+                switch(deltaX){
+                    case -1 :
+                        switch(deltaY){
+                            case -1 -> surroundingObjets[1] = o;
+                            case  0 -> surroundingObjets[8] = o;
+                            case  1 -> surroundingObjets[7] = o;
+                        }
+                        break;
+                    case 0 :
+                        switch(deltaY){
+                            case -1 -> surroundingObjets[2] = o;
+                            case  1 -> surroundingObjets[6] = o;
+                        }
+                        break;
+                    case 1 :
+                        switch(deltaY){
+                            case -1 -> surroundingObjets[3] = o;
+                            case  0 -> surroundingObjets[4] = o;
+                            case  1 -> surroundingObjets[5] = o;
+                        }
+                        break;
+                }
+                    
+            }
+        }
+        return surroundingObjets;
+    }
+    
 }
