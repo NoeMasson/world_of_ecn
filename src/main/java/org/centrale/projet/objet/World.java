@@ -418,7 +418,7 @@ public class World {
      */
     public void afficheWorld()
     {
-        System.out.print("This is a World of " + getLargeur()+"x"+getLongueur() + ". It contains :\n"+
+        System.out.print("This is a World of " + getLargeur()+"x"+getLongueur());/* + ". It contains :\n"+
            " - "+getNbProtagonistes()+" protagonistes distributed as :\n"+
            " \t- "+getNbGuerriers()+" Guerriers;\n"+
            " \t- "+getNbArchers()+" Archers;\n"+
@@ -429,7 +429,8 @@ public class World {
            " - "+getNbObjets()+" objets distributes as :\n"+
            " \t- "+getNbSoins()+" Potions de soin;\n"+       
            " \t- "+getNbManas()+" Potions de mana.\n\n"  
-           );
+           );*/
+        System.out.println("");
         
         char[][] positions = new char[getLargeur()][getLongueur()];
         for(int i = 0; i < getLargeur() ; i ++){
@@ -467,6 +468,9 @@ public class World {
             
         }
         
+        positions[joueur.getPerso().getPos().getX()]
+                [joueur.getPerso().getPos().getY()] = 'J';
+        
         for(int i = 0; i < getLargeur()+2; i ++){
             System.out.print("# ");
         }
@@ -485,6 +489,14 @@ public class World {
             System.out.print("# ");
         }
         System.out.print('\n');
+        
+        System.out.println("Où :");
+        System.out.println("J est la position du joueur ;");
+        System.out.println("G est un Guerrier ;");
+        System.out.println("M est un Mage ;");
+        System.out.println("A est un Archer ;");
+        System.out.println("L est un Loup ;");
+        System.out.println("l est un lapin.");
     }
     
     

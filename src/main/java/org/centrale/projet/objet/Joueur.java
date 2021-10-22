@@ -213,6 +213,12 @@ public class Joueur implements IO {
         int choice = 0;
         java.util.Scanner in = new java.util.Scanner(System.in);
         
+        System.out.println("Entrez la case sur laquelle vous souhaitez vous déplacer.");
+        System.out.println("Il s'agit d'un nombre entre 1 et 8 suivant la convention suivante :");
+        System.out.println("|1|8|7|\n"
+                         + "|2|J|6|\n"
+                         + "|3|4|5| où J correspond à votre position.");
+        
         while(choice == 0){
             try{
                 choice = Integer.parseInt(in.nextLine());
@@ -248,7 +254,7 @@ public class Joueur implements IO {
         
         java.util.Scanner in = new java.util.Scanner(System.in);
         int choice = -1;
-        while(choice < 0 && choice >= n){
+        while(choice < 0 || choice >= n){
             try{
                 choice = Integer.parseInt(in.nextLine());
             } catch(NumberFormatException e) {

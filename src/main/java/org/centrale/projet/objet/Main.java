@@ -27,7 +27,7 @@ public class Main {
             System.out.println("1 - Charger une partie.");
             System.out.println("2 - Nouvelle partie.");
             System.out.println("");
-            System.out.print("Entrez le numéro correspond à votre choix : ");
+            System.out.println("Entrez le numéro correspond à votre choix : ");
             
             int choice = 0;
             while(choice != 1 && choice != 2){
@@ -50,6 +50,8 @@ public class Main {
                     String file;
                     file = in.nextLine();
                     String fileName = file + ".txt";
+                    
+                    save.setFileName(file);
                     
                     try {
                     ChargementPartie loader = new ChargementPartie(fileName);
@@ -79,7 +81,7 @@ public class Main {
                     System.out.println("1 - Oui.");
                     System.out.println("2 - Non.");
                     System.out.println("");
-                    System.out.print("Entrez le numéro correspond à votre choix : ");
+                    System.out.println("Entrez le numéro correspond à votre choix : ");
                     int choice2 = 0;
                     while(choice2 != 1 && choice2 != 2){
                         try{
@@ -116,7 +118,7 @@ public class Main {
             System.out.println("3 - Sauvegarder et quitter");
             System.out.println("4 - Quitter");
             System.out.println("");
-            System.out.print("Entrez le numéro correspond à votre choix : ");
+            System.out.println("Entrez le numéro correspond à votre choix : ");
 
             while(choice != 1 && choice != 2 && choice != 3){
                 try{
@@ -129,9 +131,11 @@ public class Main {
             switch(choice){
                 case 1 -> {
                     world.tourDeJeu();
+                    choice = 0;
                 }
                 case 2 -> {
                     save.sauvegarderPartie(world);
+                    choice = 0;
                 }
                 case 3 -> {
                     save.sauvegarderPartie(world);
