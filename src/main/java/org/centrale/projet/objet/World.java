@@ -506,13 +506,16 @@ public class World {
         System.out.print('\n');
         
         System.out.println("Où :");
-        System.out.println("J est la position du joueur ;");
-        System.out.println("G est un Guerrier ;");
-        System.out.println("M est un Mage ;");
-        System.out.println("A est un Archer ;");
-        System.out.println("L est un Loup ;");
-        System.out.println("l est un lapin ;");
-        System.out.println("P est un Paysan.");
+        System.out.println("\t- J est la position du joueur ;");
+        System.out.println("\t- G est un Guerrier ;");
+        System.out.println("\t- M est un Mage ;");
+        System.out.println("\t- A est un Archer ;");
+        System.out.println("\t- L est un Loup ;");
+        System.out.println("\t- l est un lapin ;");
+        System.out.println("\t- P est un Paysan.");
+        System.out.println("\t- s est une Potion de soin.");
+        System.out.println("\t- m est une Potion de mana.");
+        System.out.println("");
     }
     
     
