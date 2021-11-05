@@ -439,6 +439,21 @@ public class World {
             }
         }
         
+        for(Objet o : objets){
+            
+            Point2D pos = o.getPos();
+            int x = pos.getX();
+            int y = pos.getY();
+            
+            if(o instanceof Soin){
+                positions[x][y] = 's';
+            }
+            if(o instanceof Mana){
+                positions[x][y] = 'm';
+            }
+            
+        }
+        
         for(Creature c : protagonistes)
         {
             Point2D pos = c.getPos();
