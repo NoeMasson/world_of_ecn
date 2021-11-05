@@ -496,7 +496,8 @@ public class World {
         System.out.println("M est un Mage ;");
         System.out.println("A est un Archer ;");
         System.out.println("L est un Loup ;");
-        System.out.println("l est un lapin.");
+        System.out.println("l est un lapin ;");
+        System.out.println("P est un Paysan.");
     }
     
     
