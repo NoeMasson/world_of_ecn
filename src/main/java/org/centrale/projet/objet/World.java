@@ -584,9 +584,12 @@ public class World {
         }
         switch(choice){
             case 1 -> {
-                this.getJoueur().move(
+                Objet toDelete = this.getJoueur().move(
                     this.surroundingObj(getJoueur().getPerso().getPos()),
                     this.surroundingOpponents(getJoueur().getPerso().getPos()));
+                if(toDelete != null){
+                    objets.remove(toDelete);
+                }
                 System.out.println("");
                 this.afficheWorld();
             }
