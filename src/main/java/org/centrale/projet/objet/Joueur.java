@@ -205,7 +205,7 @@ public class Joueur implements IO {
             if(surroundingObj[i] != null){
                 System.out.println("Sur la case "+i+1+" se trouve l'objet suivant :");
                 //surroundingObj[i].affiche();
-                System.out.println("Vous pouvez vous y déplacer.");
+                System.out.println("Vous pouvez vous y déplacer pour rammasser et utiliser l'objet (effet immédiat).");
                 System.out.println("WARNING : l'utilisation des objets n'est pas encore prises en compte.");
             }
         }
@@ -235,6 +235,19 @@ public class Joueur implements IO {
         }
         
         this.getPerso().deplace(choice);
+        
+        for(Objet o : surroundingObj){
+            if(this.perso.getPos().getX() == o.getPos().getX() && this.perso.getPos().getY() == o.getPos().getX() ){
+                if(o instanceof Soin){
+                    this.perso.setPtVie(this.perso.getPtVie()+((Soin) o).getQuantiteRestore());
+                }
+                if(o instanceof Mana){
+                    this.perso.setPtMana(this.perso.getPtMana()+((Mana) o).getQuantiteRestore());
+                }
+            }
+        }
+        
+        
     }
     
     
@@ -248,7 +261,7 @@ public class Joueur implements IO {
         System.out.println("Vous pouvez attaquer "+n+" ennemies.");
         System.out.println("");
         for(int i = 0 ; i < n ; i++){
-            System.out.print("* Entrez "+i+" pour attaquer ce personnage :");
+            System.out.println("* Entrez "+i+" pour attaquer ce personnage :");
             opponents.get(i).affiche();
             System.out.println("");
         }
