@@ -516,6 +516,10 @@ public class World {
         System.out.println("\t- s est une Potion de soin.");
         System.out.println("\t- m est une Potion de mana.");
         System.out.println("");
+        System.out.println("Le joueu possède le status suivant :");
+        System.out.println("\t Points de vie : " + joueur.getPerso().getPtVie());
+        System.out.println("\t Points de mana : " + joueur.getPerso().getPtMana());
+        System.out.println("");
     }
     
     
@@ -625,22 +629,22 @@ public class World {
                 switch(deltaX){
                     case -1 :
                         switch(deltaY){
-                            case -1 -> opponents[1] = c;
-                            case  0 -> opponents[8] = c;
-                            case  1 -> opponents[7] = c;
+                            case -1 -> opponents[0] = c;
+                            case  0 -> opponents[1] = c;
+                            case  1 -> opponents[2] = c;
                         }
                         break;
                     case 0 :
                         switch(deltaY){
-                            case -1 -> opponents[2] = c;
-                            case  1 -> opponents[6] = c;
+                            case -1 -> opponents[7] = c;
+                            case  1 -> opponents[3] = c;
                         }
                         break;
                     case 1 :
                         switch(deltaY){
-                            case -1 -> opponents[3] = c;
-                            case  0 -> opponents[4] = c;
-                            case  1 -> opponents[5] = c;
+                            case -1 -> opponents[6] = c;
+                            case  0 -> opponents[5] = c;
+                            case  1 -> opponents[4] = c;
                         }
                         break;
                 }
