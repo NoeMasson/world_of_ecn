@@ -112,7 +112,7 @@ public class Main {
                     case 1 ->{
 
                         System.out.println("Entrez le nom du fichier (sans le .txt de fin):");
-                        String file = in.nextLine();
+                        String file = in.nextLine() ;
                         save.setFileName(file);
                         }
 
