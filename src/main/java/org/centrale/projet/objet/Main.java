@@ -120,6 +120,15 @@ public class Main {
                         System.out.println("Le nom de la sauvegarde est : "+ save.getFileName());
                     }
                 }
+                world = new World();
+                try{
+                    world.creationJoueur();
+                } catch(PlayerCreationException e) {
+                    System.err.println("[ERROR]"+e);
+                    System.err.println("[ERROR] Abort...");
+                    return;
+                }
+                
             }
         }
             

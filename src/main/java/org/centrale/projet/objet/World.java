@@ -629,22 +629,22 @@ public class World {
                 switch(deltaX){
                     case -1 :
                         switch(deltaY){
-                            case -1 -> opponents[0] = c;
-                            case  0 -> opponents[1] = c;
+                            case -1 -> opponents[4] = c;
+                            case  0 -> opponents[3] = c;
                             case  1 -> opponents[2] = c;
                         }
                         break;
                     case 0 :
                         switch(deltaY){
-                            case -1 -> opponents[7] = c;
-                            case  1 -> opponents[3] = c;
+                            case -1 -> opponents[5] = c;
+                            case  1 -> opponents[1] = c;
                         }
                         break;
                     case 1 :
                         switch(deltaY){
                             case -1 -> opponents[6] = c;
-                            case  0 -> opponents[5] = c;
-                            case  1 -> opponents[4] = c;
+                            case  0 -> opponents[7] = c;
+                            case  1 -> opponents[0] = c;
                         }
                         break;
                 }
@@ -678,22 +678,22 @@ public class World {
                 switch(deltaX){
                     case -1 :
                         switch(deltaY){
-                            case -1 -> surroundingObjets[0] = o;
-                            case  0 -> surroundingObjets[1] = o;
+                            case -1 -> surroundingObjets[4] = o;
+                            case  0 -> surroundingObjets[3] = o;
                             case  1 -> surroundingObjets[2] = o;
                         }
                         break;
                     case 0 :
                         switch(deltaY){
-                            case -1 -> surroundingObjets[7] = o;
-                            case  1 -> surroundingObjets[3] = o;
+                            case -1 -> surroundingObjets[5] = o;
+                            case  1 -> surroundingObjets[1] = o;
                         }
                         break;
                     case 1 :
                         switch(deltaY){
                             case -1 -> surroundingObjets[6] = o;
-                            case  0 -> surroundingObjets[5] = o;
-                            case  1 -> surroundingObjets[4] = o;
+                            case  0 -> surroundingObjets[7] = o;
+                            case  1 -> surroundingObjets[0] = o;
                         }
                         break;
                 }

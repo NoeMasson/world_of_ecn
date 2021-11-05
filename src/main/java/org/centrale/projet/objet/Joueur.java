@@ -203,6 +203,7 @@ public class Joueur implements IO {
                 System.out.println("La case "+posOpp+" est occupée par :");
                 surroundingOpponents[i].affiche();
                 System.out.println("Vous ne pouvez pas vous y déplacer.");
+                posOk[i] = 0;
             }
             if(surroundingObj[i] != null){
                 int posObj = i+1;
