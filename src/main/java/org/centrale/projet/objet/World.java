@@ -587,6 +587,8 @@ public class World {
                 this.getJoueur().move(
                     this.surroundingObj(getJoueur().getPerso().getPos()),
                     this.surroundingOpponents(getJoueur().getPerso().getPos()));
+                System.out.println("");
+                this.afficheWorld();
             }
             case 2 -> {
                 this.getJoueur().fight(
