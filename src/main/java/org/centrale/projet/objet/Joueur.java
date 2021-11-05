@@ -264,6 +264,11 @@ public class Joueur implements IO {
      */
     public void fight(ArrayList<Creature> opponents){
         int n = opponents.size();
+        if(n==0)
+        {
+            System.out.println("Vous ne pouvez pas combattre, vous n'avez aucun adversaire à portée.");
+            return;
+        }
         System.out.println("Vous pouvez attaquer "+n+" ennemies.");
         System.out.println("");
         for(int i = 0 ; i < n ; i++){
