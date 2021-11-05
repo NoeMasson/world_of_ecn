@@ -678,22 +678,22 @@ public class World {
                 switch(deltaX){
                     case -1 :
                         switch(deltaY){
-                            case -1 -> surroundingObjets[1] = o;
-                            case  0 -> surroundingObjets[8] = o;
-                            case  1 -> surroundingObjets[7] = o;
+                            case -1 -> surroundingObjets[0] = o;
+                            case  0 -> surroundingObjets[1] = o;
+                            case  1 -> surroundingObjets[2] = o;
                         }
                         break;
                     case 0 :
                         switch(deltaY){
-                            case -1 -> surroundingObjets[2] = o;
-                            case  1 -> surroundingObjets[6] = o;
+                            case -1 -> surroundingObjets[7] = o;
+                            case  1 -> surroundingObjets[3] = o;
                         }
                         break;
                     case 1 :
                         switch(deltaY){
-                            case -1 -> surroundingObjets[3] = o;
-                            case  0 -> surroundingObjets[4] = o;
-                            case  1 -> surroundingObjets[5] = o;
+                            case -1 -> surroundingObjets[6] = o;
+                            case  0 -> surroundingObjets[5] = o;
+                            case  1 -> surroundingObjets[4] = o;
                         }
                         break;
                 }
