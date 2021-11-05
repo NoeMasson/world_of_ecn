@@ -15,7 +15,7 @@
                 <exec.appArgs></exec.appArgs>
                 <exec.mainClass>org.centrale.projet.objet.Main</exec.mainClass>
                 <exec.executable>java</exec.executable>
-                <exec.workingdir>/home/momo/Documents/Centrale/EI3/OBJET/TP/world_of_ecn</exec.workingdir>
+                <exec.workingdir></exec.workingdir>
             </properties>
         </action>
         <action>

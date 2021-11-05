@@ -210,8 +210,6 @@ public class Joueur implements IO {
                 System.out.println("Sur la case "+posObj+" se trouve l'objet suivant :");
                 //surroundingObj[i].affiche();
                 System.out.println("Vous pouvez vous y déplacer pour rammasser et utiliser l'objet (effet immédiat).");
-                System.out.println("WARNING : l'utilisation des objets n'est pas encore prises en compte.");
-            }
         }
         
         int choice = 0;

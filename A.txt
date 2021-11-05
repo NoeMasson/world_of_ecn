@@ -1,0 +1,18 @@
+Largeur 25
+Longueur 25
+Guerrier grosBill 250 0 80 60 0 10 15 0 1 10 8 3
+Mage merlin 50 50 20 25 85 80 2 20 7 2 15 22
+Archer robin 75 0 50 60 0 25 10 0 10 5 20 20 11
+Paysan peon 25 0 0 30 0 0 1 0 1 5 3 6
+Loup grr 30 50 50 10 25 1 5 19 3
+Lapin grall 3981 90 1 100 1000 1 1 10 10
+Loup grrr 80 75 30 20 45 1 5 2 13
+Loup grrr 30 30 30 20 20 1 10 5 14
+Lapin pinpin 30 20 20 2 40 1 10 23 23
+Soin 25 18 18
+Mana 50 4 4
+Soin 100 4 20
+Mana 100 7 1
+Soin 48 1 19
+Mana 24 0 0
+Joueur Guerrier bob 150 0 90 50 0 10 20 0 1 5 10 11

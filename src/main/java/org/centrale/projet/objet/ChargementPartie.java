@@ -6,12 +6,14 @@
 package org.centrale.projet.objet;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 
 
 /**
@@ -54,8 +56,8 @@ public class ChargementPartie {
      * @throws FileNotFoundException 
      */
     public ChargementPartie(String file) throws FileNotFoundException {
-        this.file = file;
-        this.reader = new BufferedReader(new FileReader(this.getFile()));
+        this.file = file; 
+        this.reader = new BufferedReader(new FileReader(this.file));
     }
     
     
