@@ -190,7 +190,9 @@ public class Joueur implements IO {
      * @param surroundingOpponents The opponents that surround the player according to 
      * World.opponent().
      */
-    public void move(Objet[] surroundingObj, Creature[] surroundingOpponents){
+    public Objet move(Objet[] surroundingObj, Creature[] surroundingOpponents){
+        
+        Objet toDelete = null;
         System.out.println("Vous avez choisi de vous déplacer.");
         int[] posOk = new int[]{1, 1, 1,
                                 1,    1, 
@@ -244,9 +246,11 @@ public class Joueur implements IO {
                 if(o instanceof Mana){
                     this.perso.setPtMana(this.perso.getPtMana()+((Mana) o).getQuantiteRestore());
                 }
+                toDelete = o;
             }
         }
         
+        return(toDelete);
         
     }
     
